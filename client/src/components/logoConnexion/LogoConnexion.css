@@ -1,0 +1,10 @@
+.logoAccueil{
+    width: 100%;
+    text-align: center;
+    margin-top: 8%;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+}
