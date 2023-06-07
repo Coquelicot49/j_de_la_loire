@@ -1,0 +1,13 @@
+.blockHaut {
+    /* background-color: yellow; */
+    display : flex;
+    width: 100%;
+}
+.logodessus{
+    position:absolute;
+}
+.navig {
+    /* position:relative; */
+    padding-left: 9%;
+    width: 100%;
+}
