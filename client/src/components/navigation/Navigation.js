@@ -1,22 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navigation.css"
-import Logo from '../logo/Logo';
 
 const Navigation = () => {
     return (
         <nav>
             
-                <NavLink to="/">
-                    {/* <li className="menuHall">Hall d'accueil</li> */}
-                </NavLink>
-                <NavLink to="/connexion">
-                    {/* <li className="menuConnexion">Connexion</li> */}
-                </NavLink>
-                <NavLink to="/accueil">
-                    {/* <li className="menuAccueil">Accueil</li> */}
-                </NavLink>
-
             <ul>
                 <li className="menuContacts" ><NavLink  to="/contact">CONTACTS</NavLink>
                         <ul className="submenu">

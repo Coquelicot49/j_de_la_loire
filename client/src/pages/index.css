@@ -1,11 +1,27 @@
 body{
     background-color: black;
+    color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .logoConnexion {
     object-position: 50% 50%;
 }
-
-p {
+h1 {
+    color:#BE1558;
+    text-decoration: underline;
+}
+h2{
+    color:#BE1558;
+}
+a {
     color: white;
+}
+.textContent{
+    max-width: 45rem;
+    margin-left: 4rem;
+}
+p, li {
+    line-height: 25px;
+    font-size: 16px;
 }
