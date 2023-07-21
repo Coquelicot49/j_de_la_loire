@@ -1,0 +1,15 @@
+.classbouton button{
+
+box-sizing: border-box;
+
+background: #E75874;
+border: 1px solid #BE1558;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: white;
+}

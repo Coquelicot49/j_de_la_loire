@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const LogoConnexion = () => {
     return (
         <div className='logoAccueil'>
-           <NavLink to="/connexion">
+           <NavLink to="/login">
             <img className='logoConnexion' src={logoAccueil} alt="bouton accès"/>
             </NavLink>
         </div>

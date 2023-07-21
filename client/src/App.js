@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Hall from "./pages/Hall";
-import Connexion from "./pages/Connexion"
+import Login from "./pages/Login"
 import Accueil from './pages/Accueil'
 import Contact from "./pages/Contact"
 import CarnetAdresse from "./pages/CarnetAdresse"
@@ -21,13 +21,15 @@ import ConseilAdmin from "./pages/ConseilAdmin"
 import AssGen from "./pages/AssGen"
 import Don from "./pages/Don"
 import MonCompte from "./pages/MonCompte"
+import Inscription from "./pages/Inscription"
  
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Hall/>} />
-        <Route path="/connexion" element={<Connexion/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/login/inscription" element={<Inscription/>}/>
         <Route path="/accueil" element={<Accueil/>} />
         <Route path="/contact" element={<Contact/>} />
           <Route path="/contact/carnetadresse" element={<CarnetAdresse/>} />

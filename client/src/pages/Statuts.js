@@ -3,6 +3,8 @@ import Header from '../components/header/Header';
 import {HashLink as Link} from 'react-router-hash-link';
 import "./index.css"
 import pdfDeclare from "../components/lesPDF/declaration_initiale.pdf"
+import pdfStatuts from "../components/lesPDF/statuts.pdf"
+import pdfJournalOff from "../components/lesPDF/journalOfficiel.pdf"
 
 
 const Statuts = () => {
@@ -21,6 +23,8 @@ const Statuts = () => {
                  <br/>
 
             <h2 id="statutsAss">Statuts de l’association JAD’OR</h2>
+            
+            <p><Link to={pdfStatuts} target="_blank" rel="noreferrer">Cliquez ici pour consulter les statuts validées</Link></p>
             <h3>Article 1er : Constitution – Dénomination</h3>
             <p>Il est fondé, entre les adhérents aux présents statuts, une association régie par la loi du 1er juillet 1901 et le décret de 16 août 1901, ayant pour titre : JAD’OR.</p>
             <h3>Article 2 : Objet – Durée</h3>
@@ -92,13 +96,14 @@ const Statuts = () => {
             </ul>
 
             <h2 id="lettre">Demande d'inscription</h2>
-            <p>La lettre de demande d'inscription a été envoyée le 14/07/2011 auprès de la sous-préfecture de Saumur (49).
-            <br/><Link to={pdfDeclare} target="_blank" rel="noreferrer">Cliquez ici pour voir la lettre</Link>
+            <p>La lettre de demande d'inscription de l'association a été envoyée le 11/12/2010 à la préfecture du Maine et Loire. 
+                Cette dernière l'a prise en compte le 18/01/2011. La demande a ensuite été transmise à la sous-préfecture de Saumur, pour une prise en charge en date du 07/02/2011.
+                <br/><br/><Link to={pdfDeclare} target="_blank" rel="noreferrer">Cliquez ici pour voir la lettre</Link>
             </p>
 
             <h2 id="parution">Parution au journal officiel</h2>
-            <p>L'association a été ... dans le journal officiel du ....
-                <br/><Link>Cliquez ici pour voir l'extrait de la parution</Link>
+            <p>L'association est publiée dans le journal officiel de la République Française du 03/12/2011.
+                <br/><br/><Link to={pdfJournalOff} target="_blank" rel="noreferrer">Cliquez ici pour voir l'extrait de la parution</Link>
             </p>
             </div>
         </div>
