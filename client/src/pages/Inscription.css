@@ -1,4 +1,56 @@
-#formSignup {
+.classFormSignup {
+    /* background-color: brown; */
+    color: white;
+    width: 40rem;
     margin-top: 250px;
-    background-color: brown;
+    margin-left: 250px;
+    margin-right: 100px;
+}
+
+.formStep {
+    display: flex;
+    justify-content: center;
+    /* background-color: burlywood; */
+}
+
+.inputP {
+    /* position: absolute; */
+    width: 100%;
+    text-align: end;
+    /* height: 53px; */
+    /* left: 30%;
+    top: 35%; */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    /* display: flex;
+    align-items:center; */
+    color: #FFFFFF;
+
+    /* background-color: yellow; */
+}
+
+.inputID {
+    width: 402px;
+    height: 40px;
+    background: #E75874;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.formStep2 {
+    display: flex;
+    align-items: center;
+    padding-left: 47%;
+    height: 40px;
+    padding-top: 4px;
+    /* justify-content:center ; */
+    /* background-color: blue; */
+}
+
+#boutonID {
+
 }
