@@ -22,6 +22,7 @@ import AssGen from "./pages/AssGen"
 import Don from "./pages/Don"
 import MonCompte from "./pages/MonCompte"
 import Inscription from "./pages/Inscription"
+import Parameters from './pages/Parameters';
  
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/jador/assembleegenerale" element={<AssGen/>} />
           <Route path="/jador/don" element={<Don/>} />
         <Route path="/moncompte" element={<MonCompte/>} />
+          <Route path="/moncompte/parameters" element={<Parameters/>} />
       </Routes>
     </BrowserRouter>
   );

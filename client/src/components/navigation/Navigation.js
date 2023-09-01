@@ -44,7 +44,13 @@ const Navigation = () => {
                         </ul>
                 </li>
 
-                <li className="menuMonCompte"><NavLink to="/moncompte">MON COMPTE</NavLink></li>
+                <li className="menuMonCompte"><NavLink to="/moncompte">MON COMPTE</NavLink>
+                        <ul className="submenu">
+                            <li><NavLink to="/moncompte/parameters">Mes paramètres</NavLink></li>
+                            <li><NavLink>Déconnexion</NavLink></li>
+                        </ul>
+                </li>
+
             </ul>           
         </nav>
     );
