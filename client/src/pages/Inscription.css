@@ -33,6 +33,7 @@
     /* background-color: yellow; */
 }
 
+
 .inputID {
     width: 402px;
     height: 40px;
@@ -53,4 +54,8 @@
 
 #boutonID {
 
+}
+
+button {
+ color: white   
 }

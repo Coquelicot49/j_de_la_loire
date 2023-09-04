@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./index.css"
 import "./Inscription.css"
 import pinkLogo from "../images/rondrose.png"
@@ -7,6 +7,34 @@ import Bouton from '../components/bouton/Bouton';
 
 
 const Inscription = () => {
+
+    // définition de l'état initiale de la valeur de l'input, donc vide
+    const [mdp, setMdp] = useState("")
+    // définition du bon mot de passe
+    let bonMdp = "test"
+    // définition de la valeure initiale de showFormalaire (ligne 59)
+    // true = affiche le contenu après && (
+    // false = cache le contenu après && (
+    const [showFormulaire, setShowFormulaire] = useState(false)
+
+    // fonction rattachée à l'input onChange
+    // ainsi, la valeur de mdp sera actualisé à chaque changement dans l'input
+    const inputChange = (e) => {
+    setMdp(e.target.value) 
+        }
+
+    // fonction rattaché au 1er bouton
+    // si le mot de passe est bon, on change l'état de setShowFormulaire en true pour faire apparaitre le pavé
+    const submit = ()=> {
+        if (mdp == bonMdp) {
+            setShowFormulaire(true)
+        }
+        else {alert("Ce n'est pas le bon mot de passe. Es-tu vraiment Jadeau ? Recommence")}
+    }
+
+
+
+
     return (
         <div>
             <div>
@@ -22,16 +50,18 @@ const Inscription = () => {
                     <input className='inputID'
                     type="password"
                     id="specialMDP"
-                    //value= "specialMDP"
+                    value={mdp}
+                    onChange={inputChange}
                     />
                     </p>
                     </div>
 
                     <div className='formStep2'>
-                    <Bouton id='boutonID' texteBouton='Soumettre le mot de passe'/>
+                    <Bouton id='boutonID' texteBouton='Soumettre le mot de passe' onClick={submit}/>
                     </div>
 
 
+                { showFormulaire && (
                 <form id="formSignup">
 
                     <div><br/>Félicitation, tu as donné le mot de passe que seuls les Jadeau connaissent. 
@@ -75,7 +105,7 @@ const Inscription = () => {
                     <Bouton id='boutonID' texteBouton='Création de mon compte'/>
                     </div>
 
-                </form>
+                </form> )}
             </div>
 
         </div>
