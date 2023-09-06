@@ -1,11 +1,10 @@
-//require('dotenv').config()
-// require('dotenv').config({path: '/path/to/.env'});
 import React, { useState } from 'react';
 import "./index.css"
 import "./Inscription.css"
 import pinkLogo from "../images/rondrose.png"
 // import Textbox from '../components/textbox/Textbox';
 import Bouton from '../components/bouton/Bouton';
+// console.log(process.env.REACT_APP_MDP_FORM)
 
 
 const Inscription = () => {
@@ -14,7 +13,7 @@ const Inscription = () => {
     const [mdp, setMdp] = useState("")
     // définition du bon mot de passe
     // let bonMdp = process.env.REACT_APP_MDP_FORM
-    let bonMdp = "test"
+    let bonMdp = process.env.REACT_APP_MDP_FORM
     // définition de la valeure initiale de showFormalaire (ligne 59)
     // true = affiche le contenu après && (
     // false = cache le contenu après && (
