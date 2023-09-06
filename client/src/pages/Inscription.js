@@ -1,3 +1,5 @@
+//require('dotenv').config()
+// require('dotenv').config({path: '/path/to/.env'});
 import React, { useState } from 'react';
 import "./index.css"
 import "./Inscription.css"
@@ -11,6 +13,7 @@ const Inscription = () => {
     // définition de l'état initiale de la valeur de l'input, donc vide
     const [mdp, setMdp] = useState("")
     // définition du bon mot de passe
+    // let bonMdp = process.env.REACT_APP_MDP_FORM
     let bonMdp = "test"
     // définition de la valeure initiale de showFormalaire (ligne 59)
     // true = affiche le contenu après && (

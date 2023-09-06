@@ -23,6 +23,7 @@ import Don from "./pages/Don"
 import MonCompte from "./pages/MonCompte"
 import Inscription from "./pages/Inscription"
 import Parameters from './pages/Parameters';
+
  
 const App = () => {
   return (
