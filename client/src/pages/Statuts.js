@@ -5,6 +5,7 @@ import "./index.css"
 import pdfDeclare from "../components/lesPDF/declaration_initiale.pdf"
 import pdfStatuts from "../components/lesPDF/statuts.pdf"
 import pdfJournalOff from "../components/lesPDF/journalOfficiel.pdf"
+import "./Statuts.css"
 
 
 const Statuts = () => {
@@ -12,7 +13,7 @@ const Statuts = () => {
         <div>
             <Header/>
             
-            <div className='textContent'>
+            <div id='textContentSatuts'>
             <h1>Constitution de l'association JAD'OR</h1>
             <p>Vous trouverez sur cette page la documentation liée à la création de l'association JAD'OR :</p>
             <ul>

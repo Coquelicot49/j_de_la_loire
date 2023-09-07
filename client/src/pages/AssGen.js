@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/header/Header';
 import AG_card from '../components/ag_card/AG_card';
 import "./AssGen.css"
-import Inputbox from '../components/inputbox/Inputbox';
+import Bouton from '../components/bouton/Bouton';
 
 const AssGen = () => {
 
@@ -18,7 +18,7 @@ const AssGen = () => {
             <div className='intro'>
                 <h1>Les Assemblées Générales</h1>
                 <p>Depuis juillet 1997, date du premier camp Jad'Or, un bon nombre de réunion ont été organisée.
-                <br/>On retrouve ici la liste de toutes ces "assemblées générales".
+                <br/>On retrouve ici la liste de toutes ces cousinade / assemblées générales.
                 </p>
             </div>
 
@@ -29,10 +29,24 @@ const AssGen = () => {
                         <select><option> par type de lieu </option></select>
                         <select><option> par Sociétaire </option></select>
                     </div>
+
+                    <div id="compteurAG">
+                        Nombre d'assembléés générales affichées :
+                    </div>
+
+                    <div id='addAGButton'>
+                    <Bouton texteBouton="Ajouter une AG"/>
+                    </div>
                 </p>
             </div>
 
             <div className='lesCardsAG'>
+                <AG_card/>
+                <AG_card/>
+                <AG_card/>
+                <AG_card/>
+                <AG_card/>
+                <AG_card/>
                 <AG_card/>
             </div>
             </div>

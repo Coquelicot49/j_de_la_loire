@@ -1,12 +1,13 @@
 import React from 'react';
 import Header from '../components/header/Header';
+import "./ConseilAdmin.css"
 
 const Conseiladmin = () => {
     return (
         <div>
             <Header/>
 
-            <div className='textContent'>
+            <div id='textContentCA'>
             <h1>Conseil d'administration de l'association JAD'OR</h1>
 
 

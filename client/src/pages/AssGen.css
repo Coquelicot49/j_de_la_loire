@@ -1,5 +1,9 @@
 .lesCardsAG {
-    margin-top: 35px;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap : 25px;
+   
 }
 
 .filterBox {
@@ -7,4 +11,12 @@
     display : flex;
     justify-content: space-around;
     margin-top: 10px;
+}
+
+#compteurAG {
+    margin-top: 20px;
+}
+
+#addAGButton {
+    margin-top : 20px;
 }

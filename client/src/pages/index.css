@@ -18,7 +18,7 @@ a {
     color: white;
 }
 .textContent{
-    max-width: 45rem;
+    /* max-width: 45rem; */
     margin-left: 4rem;
 }
 p, li {
