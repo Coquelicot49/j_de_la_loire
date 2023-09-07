@@ -35,6 +35,7 @@ const AG_card = () => {
 
                 <div className='modifAG'>
                     <Bouton className="boutonModifAG" texteBouton="✏️"/>
+                    <Bouton className="boutonSkipAG" texteBouton="❌"/>
                 </div>
 
             </div>

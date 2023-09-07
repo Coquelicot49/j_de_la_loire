@@ -17,6 +17,11 @@
     margin-top: 20px;
 }
 
+.modifAG {
+    display: flex;
+    gap : 2px;
+}
+
 #addAGButton {
     margin-top : 20px;
 }
