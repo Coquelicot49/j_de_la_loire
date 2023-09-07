@@ -1,0 +1,50 @@
+.cardAG {
+    /* background-color: yellow; */
+    border : 5px solid #E75874;
+    border-radius: 25px;
+    width: 200px;
+    font-size: large;
+}
+
+.yearAG {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color : white;
+    background-color: #E75874;
+    border-radius: 100%;
+    margin-bottom: 10px;
+    margin-left:60px;
+    margin-right:60px;
+    margin-top: -20px;
+    height: 40px;
+    
+}
+
+.infoAG{
+    margin-left :20px;
+    margin-top: 20px;
+    /* color:#E75874; */
+    /* color : #BE1558; */
+
+}
+
+.modifAG {
+    /* display: flex;
+    justify-content: center; */
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.presentielAG {
+    margin-top: 25px;
+    margin-left: 20px;
+    font-size: medium;
+}
+
+.liSocietaire {
+    margin-left: -20px;
+}
+/* li {
+    margin-left: -20px;
+} */
