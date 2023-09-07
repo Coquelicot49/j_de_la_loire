@@ -11,6 +11,7 @@ const Statuts = () => {
     return (
         <div>
             <Header/>
+            
             <div className='textContent'>
             <h1>Constitution de l'association JAD'OR</h1>
             <p>Vous trouverez sur cette page la documentation liée à la création de l'association JAD'OR :</p>

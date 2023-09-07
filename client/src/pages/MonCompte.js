@@ -6,7 +6,9 @@ const Moncompte = () => {
     return (
         <div>
         <Header/>
+        <div className='textContent'>
         <p>Ceci est la page MON COMPTE</p>
+        </div>
         </div>
     );
 };

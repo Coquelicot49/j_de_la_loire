@@ -5,7 +5,10 @@ const Calendrier = () => {
     return (
         <div>
             <Header/>
+
+            <div className='textContent'>
             <p>Ceci est la page Événement - Calendrier anniversaire</p>
+            </div>
         </div>
     );
 };

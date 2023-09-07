@@ -5,7 +5,9 @@ const Parameters = () => {
     return (
         <div>
             <Header/>
+            <div className='textContent'>
             <p>ceci est la page des paramètres de l'utilisateur</p>
+            </div>
         </div>
     );
 };

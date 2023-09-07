@@ -6,7 +6,9 @@ const Memories = () => {
     return (
         <div>
         <Header/>
+        <div className='textContent'>
         <p>Ceci est la page MÉMOIRE</p>  
+        </div>
         </div>
     );
 };

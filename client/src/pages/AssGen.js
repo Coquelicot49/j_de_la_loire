@@ -1,14 +1,41 @@
 import React from 'react';
 import Header from '../components/header/Header';
 import AG_card from '../components/ag_card/AG_card';
+import "./AssGen.css"
+import Inputbox from '../components/inputbox/Inputbox';
 
 const AssGen = () => {
+
+    const soc = ["Lucie", "Charline", "Flavie"]
+
+
     return (
         <div>
             <Header/>
-            <p>Ceci est la page Jad'or - Assemblée générale</p>
 
-            <AG_card/>
+           <div className='textContent'>
+
+            <div className='intro'>
+                <h1>Les Assemblées Générales</h1>
+                <p>Depuis juillet 1997, date du premier camp Jad'Or, un bon nombre de réunion ont été organisée.
+                <br/>On retrouve ici la liste de toutes ces "assemblées générales".
+                </p>
+            </div>
+
+            <div className='filtreAG'>
+                <p> Tu peux filtrer par :
+                    <div className='filterBox'>
+                        <select><option> par Année </option></select>
+                        <select><option> par type de lieu </option></select>
+                        <select><option> par Sociétaire </option></select>
+                    </div>
+                </p>
+            </div>
+
+            <div className='lesCardsAG'>
+                <AG_card/>
+            </div>
+            </div>
         </div>
     );
 };

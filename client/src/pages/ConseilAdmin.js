@@ -5,6 +5,8 @@ const Conseiladmin = () => {
     return (
         <div>
             <Header/>
+
+            <div className='textContent'>
             <h1>Conseil d'administration de l'association JAD'OR</h1>
 
 
@@ -32,6 +34,8 @@ const Conseiladmin = () => {
                 <li>Trésorière : Valérie</li>
                 <li>Secrétaire : Lucie</li>
             </ul>
+
+            </div>
         </div>
     );
 };

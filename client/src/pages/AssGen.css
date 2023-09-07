@@ -1,0 +1,10 @@
+.lesCardsAG {
+    margin-top: 35px;
+}
+
+.filterBox {
+    width: 400px;
+    display : flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}

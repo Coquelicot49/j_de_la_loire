@@ -5,7 +5,9 @@ const Quiestce = () => {
     return (
         <div>
             <Header/>
+            <div className='textContent'>
             <p>Ceci est la page Jeux - Qui est-ce ?</p>
+            </div>
         </div>
     );
 };

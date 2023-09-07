@@ -12,6 +12,7 @@ const Login = () => {
         <div>
         <h1 id='authText'><img src={pinkLogo}></img>Qui n'est pas Jadeau ne passera pas !</h1>
         </div>
+        <div className='textContent'>
 
             <div className="container">
             <p id="authAsk1"> Adresse mail: <input id="login"></input> </p>
@@ -27,7 +28,7 @@ const Login = () => {
                 
 
             </div>
-
+            </div>
     </div>
     );
 };

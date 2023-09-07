@@ -5,7 +5,9 @@ const Retrouvailles = () => {
     return (
         <div>
             <Header/>
+            <div className='textContent'>
             <p>Ceci est la page Événement - Prochaines retrouvailles</p>
+            </div>
         </div>
     );
 };

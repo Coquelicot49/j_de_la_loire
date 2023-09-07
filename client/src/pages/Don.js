@@ -5,7 +5,9 @@ const Don = () => {
     return (
         <div>
             <Header/>
+            <div className='textContent'>
             <p>Ceci est la page Jad'or - Don</p>
+            </div>
         </div>
     );
 };
