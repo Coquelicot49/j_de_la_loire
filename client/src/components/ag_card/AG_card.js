@@ -2,20 +2,20 @@ import React from 'react'
 import "./AG_card.css"
 import Bouton from '../bouton/Bouton';
 
-const AG_card = () => {
+const AG_card = ({year, season, host, place}) => {
     return (
         <div>
             
             <div className="cardAG">
 
                 <div className='yearAG'>
-                    1997
+                    {year}
                 </div>
 
                 <div className='infoAG'>
-                    Printemps Eté
-                    <br/> Camping
-                    <br/>Longeville sur Mer
+                    {season}
+                    <br/> {host}
+                    <br/>{place}
                 </div>
 
                 <div className='presentielAG'>
