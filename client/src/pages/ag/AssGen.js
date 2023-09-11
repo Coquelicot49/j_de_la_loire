@@ -3,10 +3,28 @@ import Header from '../../components/header/Header';
 import AG_card from '../../components/ag_card/AG_card';
 import "./AssGen.css"
 import Bouton from '../../components/bouton/Bouton';
+import {supabase} from '../../supabase.ts';
 
 const AssGen = () => {
 
     const soc = ["Lucie", "Charline", "Flavie"]
+
+    const fetchAG = async() => {
+        try {
+            let { data: AG, error } = await supabase
+            .from('AG')
+            .select('*')
+
+            if (AG) {
+                console.log(AG)
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+    fetchAG()
+
 
 
     return (
@@ -31,7 +49,8 @@ const AssGen = () => {
                     </div>
 
                     <div id="compteurAG">
-                        Nombre d'assembléés générales affichées :
+                        Nombre d'assemblées générales totales :  {/* length table AG */}
+                        <br/> Nombre d'assembléés générales affichées :
                     </div>
 
                     <div id='addAGButton'>
