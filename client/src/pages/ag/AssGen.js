@@ -12,6 +12,9 @@ const AssGen = () => {
     // Au besoin, setDataAG prendra des valeurs différentes pour remplir les données dataAG des AG_card
     const [dataAG, setDataAG] = useState(null);
 
+    // Définiton de l'état initiale du nombre total d'AG, donc avant appel de la table "ag" à 0
+    const [totalAG, setTotalAG] = useState(0)
+
     // useEffect pour fetcher la table "ag" en totalité via "fetchAG()"
     useEffect(() => {
         fetchAG();
@@ -27,6 +30,7 @@ const AssGen = () => {
             if (ag) {
                 console.log(ag)
                 setDataAG(ag)
+                setTotalAG(ag.length)
             }
         }
         catch (error) {
@@ -58,7 +62,7 @@ const AssGen = () => {
                         </div>
 
                         <div id="compteurAG">
-                            Nombre d'assemblées générales totales :  {/* length table AG */}
+                            Nombre d'assemblées générales totales depuis 1997 : {totalAG}
                             <br/> Nombre d'assembléés générales affichées :
                         </div>
 
