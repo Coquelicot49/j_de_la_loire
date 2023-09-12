@@ -1,8 +1,28 @@
 import React from 'react'
 import "./AG_card.css"
 import Bouton from '../bouton/Bouton';
+import {supabase} from '../../supabase.ts';
 
-const AG_card = ({year, season, host, place}) => {
+const AG_card = ({year, season, host, place, id_ag}) => {
+
+
+    // DELETE CARD_AG //
+    // fonction/requête qui supprime le rang associé à l'id_ag sélectionnée
+    const deleteAG = async() => {
+        try { 
+            let { error } = await supabase
+            .from('ag')
+            .delete()
+            .eq('id_ag', id_ag)
+            window.location.href = '/jador/assembleegenerale'
+        }
+        catch (error) {
+            alert(error)
+            console.log(error)
+        }
+    }
+
+
     return (
         <div>
             
@@ -15,7 +35,7 @@ const AG_card = ({year, season, host, place}) => {
                 <div className='infoAG'>
                     {season}
                     <br/> {host}
-                    <br/>{place}
+                    <br/> {place}
                 </div>
 
                 <div className='presentielAG'>
@@ -34,8 +54,8 @@ const AG_card = ({year, season, host, place}) => {
                 </div>
 
                 <div className='modifAG'>
-                    <Bouton className="boutonModifAG" texteBouton="✏️"/>
-                    <Bouton className="boutonSkipAG" texteBouton="❌"/>
+                    <Bouton className="boutonModifAG" texteBouton="✏️" />
+                    <Bouton className="boutonSkipAG" texteBouton="❌" onClick={()=>{deleteAG({id_ag})}}/>
                 </div>
 
             </div>

@@ -8,11 +8,11 @@ import {supabase} from '../../supabase.ts';
 
 const AssGen = () => {
 
-    // Définition de l'état initiale des données de la table "ag", donc vide au départ
+    // Définition de l'état initial des données de la table "ag", donc vide au départ
     // Au besoin, setDataAG prendra des valeurs différentes pour remplir les données dataAG des AG_card
     const [dataAG, setDataAG] = useState(null);
 
-    // Définiton de l'état initiale du nombre total d'AG, donc avant appel de la table "ag" à 0
+    // Définiton de l'état initial du nombre total d'AG, donc avant appel de la table "ag" à 0
     const [totalAG, setTotalAG] = useState(0)
 
     // useEffect pour fetcher la table "ag" en totalité via "fetchAG()"
@@ -20,12 +20,13 @@ const AssGen = () => {
         fetchAG();
       }, []);
 
-    // fonction qui appelle toutes les données de la table "ag"
+    // fonction/requête qui appelle toutes les données de la table "ag"
     const fetchAG = async() => {
         try {
             let { data: ag, error } = await supabase
             .from('ag')
             .select('*')
+            .order('year')
 
             if (ag) {
                 console.log(ag)
@@ -37,7 +38,6 @@ const AssGen = () => {
             console.log(error)
         }
     }
-
 
 
     return (
@@ -77,7 +77,7 @@ const AssGen = () => {
                     {dataAG ? (
                         //...alors pour chaque ligne de données dispo, rempli une card_AG et affiche là
                         dataAG.map((item) => (
-                            <AG_card year={item.year} season={item.season} place={item.place} host={item.host}/>
+                            <AG_card year={item.year} season={item.season} place={item.place} host={item.host} id_ag={item.id_ag}/>
                         ))
                         //...sinon ou en attendant affiche le message d'attente
                     ) : (<p>En cours de chargement...</p>)}
