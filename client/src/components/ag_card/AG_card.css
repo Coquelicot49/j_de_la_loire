@@ -44,6 +44,7 @@
 .liSocietaire {
     margin-left: -20px;
 }
-/* li {
-    margin-left: -20px;
-} */
+
+.liListeSoc{
+    margin-top: -18px;
+}

@@ -8,12 +8,10 @@ import {supabase} from '../../supabase.ts';
 
 const AssGen = () => {
 
+    // FETCH TABLE AG //
     // Définition de l'état initial des données de la table "ag", donc vide au départ
     // Au besoin, setDataAG prendra des valeurs différentes pour remplir les données dataAG des AG_card
     const [dataAG, setDataAG] = useState(null);
-
-    // Définiton de l'état initial du nombre total d'AG, donc avant appel de la table "ag" à 0
-    const [totalAG, setTotalAG] = useState(0)
 
     // useEffect pour fetcher la table "ag" en totalité via "fetchAG()"
     useEffect(() => {
@@ -38,6 +36,10 @@ const AssGen = () => {
             console.log(error)
         }
     }
+
+    // COMPTABILITSATION NOMBRE AG TOTAL
+    // Définiton de l'état initial du nombre total d'AG, donc avant appel de la table "ag" à 0
+    const [totalAG, setTotalAG] = useState(0)
 
 
     return (

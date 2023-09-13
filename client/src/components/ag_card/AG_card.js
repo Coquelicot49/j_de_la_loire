@@ -1,9 +1,37 @@
 import React from 'react'
+import { useState, useEffect } from "react";
 import "./AG_card.css"
 import Bouton from '../bouton/Bouton';
 import {supabase} from '../../supabase.ts';
 
 const AG_card = ({year, season, host, place, id_ag}) => {
+
+    //AFFICHAGE DES SOCIETAIRES
+    // Au besoin, setDataSOC prendra des valeurs différentes pour remplir les données dataSOC des AG_card
+    const [dataSOC, setDataSOC] = useState(null)
+
+    // useEffect pour fetcher la table "societaire" en totalité via "fetchSOC()"
+    useEffect(() => {
+        fetchSOC();
+        }, []);
+    
+    // fonction/requête qui appelle toutes les données de la table "societaires"
+    const fetchSOC = async() => {
+        try {
+            let { data: soc_ag, error } = await supabase
+            .from('presents_soc_ag')
+            .select('*')
+            .eq('id_ag', id_ag)
+            
+            if (soc_ag) {
+                setDataSOC(soc_ag)
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
 
 
     // DELETE CARD_AG //
@@ -11,13 +39,13 @@ const AG_card = ({year, season, host, place, id_ag}) => {
     const deleteAG = async() => {
         try { 
             let { error } = await supabase
-            .from('ag')
+            .from('ag','presents')
             .delete()
             .eq('id_ag', id_ag)
             window.location.href = '/jador/assembleegenerale'
         }
         catch (error) {
-            alert(error)
+            // alert(error)
             console.log(error)
         }
     }
@@ -40,18 +68,17 @@ const AG_card = ({year, season, host, place, id_ag}) => {
 
                 <div className='presentielAG'>
                     Sociétaires présents :
+                    {dataSOC ? ( dataSOC.map((item) => (
                     <ul className='liSocietaire'>
-                        <li>Valérie</li>
-                        <li>Carole</li>
-                        <li>Florence</li>
-                        <li>David</li>
-                        <li>Lucie</li>
-                        <li>Vincent</li>
-                        <li>Charline</li>
-                        <li>Flavie</li>
-                        <li>Coraline</li>
+                        <li className='liListeSoc'>{item.prenom}</li>
                     </ul>
+                    ))): (
+                        <ul className='liSocietaire'>
+                        <li className='liListeSoc'>En cours de chargement...</li>
+                    </ul> 
+                    )}
                 </div>
+
 
                 <div className='modifAG'>
                     <Bouton className="boutonModifAG" texteBouton="✏️" />
