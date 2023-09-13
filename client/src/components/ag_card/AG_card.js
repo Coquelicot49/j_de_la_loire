@@ -39,7 +39,7 @@ const AG_card = ({year, season, host, place, id_ag}) => {
     const deleteAG = async() => {
         try { 
             let { error } = await supabase
-            .from('ag','presents')
+            .from('ag')
             .delete()
             .eq('id_ag', id_ag)
             window.location.href = '/jador/assembleegenerale'
