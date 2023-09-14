@@ -42,6 +42,7 @@ const AssGen = () => {
     const [totalAG, setTotalAG] = useState(0)
 
 
+
     return (
         <div>
             <Header/>
@@ -60,7 +61,7 @@ const AssGen = () => {
                         <div className='filterBox'>
                             <select><option> par Année </option></select>
                             <select><option> par type de lieu </option></select>
-                            <select><option> par Sociétaire </option></select>
+                            <select><option> par sociétaire </option></select>
                         </div>
 
                         <div id="compteurAG">
