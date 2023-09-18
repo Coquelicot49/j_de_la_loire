@@ -4,7 +4,7 @@ import "./AG_card.css"
 import Bouton from '../bouton/Bouton';
 import {supabase} from '../../supabase.ts';
 
-const AG_card = ({year, season, host, place, id_ag}) => {
+const AG_card = ({year, season, host, place, id_ag, count}) => {
 
     //AFFICHAGE DES SOCIETAIRES
     // Au besoin, setDataSOC prendra des valeurs différentes pour remplir les données dataSOC des AG_card
@@ -50,6 +50,7 @@ const AG_card = ({year, season, host, place, id_ag}) => {
         }
     }
 
+    
 
     return (
         <div>
@@ -69,7 +70,7 @@ const AG_card = ({year, season, host, place, id_ag}) => {
                 <div className='presentielAG'>
                     Sociétaires présents :
                     {dataSOC ? ( dataSOC.map((item) => (
-                    <ul className='liSocietaire'>
+                    <ul className='liSocietaire' key={item.id_soc}>
                         <li className='liListeSoc'>{item.prenom}</li>
                     </ul>
                     ))): (

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Inputbox = () => {
+const Inputbox = ({value, onChange}) => {
     return (
         <div>
-            <input id='input'></input>
+            <input id='input' value={value} onChange={onChange}></input>
         </div>
     );
 };
