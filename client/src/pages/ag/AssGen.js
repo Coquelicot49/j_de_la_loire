@@ -57,22 +57,21 @@ const AssGen = () => {
                 </div>
 
                 <div className='filtreAG'>
-                    <p> Tu peux filtrer par :
-                        <div className='filterBox'>
-                            <select><option> par Année </option></select>
-                            <select><option> par type de lieu </option></select>
-                            <select><option> par sociétaire </option></select>
-                        </div>
+                    <div><p> Tu peux filtrer par :</p></div>
+                    <div className='filterBox'>
+                        <select><option> par Année </option></select>
+                        <select><option> par type de lieu </option></select>
+                        <select><option> par sociétaire </option></select>
+                    </div>
 
-                        <div id="compteurAG">
-                            Nombre d'assemblées générales totales depuis 1997 : {totalAG}
-                            <br/> Nombre d'assembléés générales affichées :
-                        </div>
+                    <div id="compteurAG">
+                        Nombre d'assemblées générales totales depuis 1997 : {totalAG}
+                        <br/> Nombre d'assembléés générales affichées :
+                    </div>
 
-                        <div id='addAGButton'>
-                        <Bouton texteBouton="Ajouter une AG"/>
-                        </div>
-                    </p>
+                    <div id='addAGButton'>
+                    <Bouton texteBouton="Ajouter une AG"/>
+                    </div>
                 </div>
 
                 <div className='lesCardsAG'>
