@@ -21,6 +21,11 @@ const AssGen = () => {
     const [hostFilter, setHostFilter] = useState('')
     const [socFilter, setSocFilter] = useState('')
 
+    // COMPTABILITSATION NOMBRE AG TOTAL
+    // Définiton de l'état initial du nombre total d'AG, donc avant appel de la table "ag" à 0
+    const [totalAG, setTotalAG] = useState(0)
+    const [totalAGDisplay, setTotalAGDisplay] = useState(0)
+
 
     // FETCH DES TABLES AG & SOCIETAIRES //
     // useEffect pour fetcher la table "ag" en totalité via "fetchAG()"
@@ -33,17 +38,16 @@ const AssGen = () => {
     // Et qui ajoute un/des filtre(s) si filtre(s) activé(s)
     const fetchAG = async() => {
         try {
-            let query = supabase
+            let {data: ag, error } = await supabase
             .from('ag')
             .select('*')
             .order('year')
-
-            if (yearFilter) { query = query.eq('year', yearFilter) }
-            if (hostFilter) { query = query.eq('host', hostFilter) }
            
-            const {data: ag, error} = await query
-            setDataAG(ag)
-            setTotalAG(ag.length)
+            if (ag){
+                setDataAG(ag)
+                setTotalAG(ag.length)
+                setTotalAGDisplay(ag.length)
+            }
         }
         catch (error) {
             console.log(error)
@@ -68,22 +72,43 @@ const AssGen = () => {
     }
 
     // ACTIVER LES FILTRES
-    const handleFilter = () => {
-        fetchAG()
+    const handleFilter = async() =>  {
+        try {
+            let query = supabase
+            .from('ag')
+            .select('*')
+            .order('year')
+
+            if (yearFilter) { query = query.eq('year', yearFilter) }
+            if (hostFilter) { query = query.eq('host', hostFilter) }
+           
+            const {data: ag, error} = await query
+            setDataAG(ag)
+            setTotalAGDisplay(ag.length)
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     // EFFACER LES FILTRES
     // au click du bouton "Effacer les filtres"
     const resetFilter = () => { 
-        // setYearFilter('')
-        // setHostFilter('')
-        fetchAG() 
+        setYearFilter('')
+        setHostFilter('')
+        setSocFilter('')
+
+        const fetchAG = async() => {
+        let { data: ag } = await supabase
+        .from('ag')
+        .select('*')
+        .order('year')
+        setDataAG(ag)
+        setTotalAGDisplay(ag.length)
+        }
+
+        fetchAG()
     }
-
-    // COMPTABILITSATION NOMBRE AG TOTAL
-    // Définiton de l'état initial du nombre total d'AG, donc avant appel de la table "ag" à 0
-    const [totalAG, setTotalAG] = useState(0)
-
 
 
     return (
@@ -166,7 +191,7 @@ const AssGen = () => {
 
                     <div id="compteurAG">
                         Nombre d'assemblées générales totales depuis 1997 : {totalAG}
-                        <br/> Nombre d'assembléés générales affichées :
+                        <br/> Nombre d'assembléés générales affichées : {totalAGDisplay}
                     </div>
 
                     <div id='addAGButton'>
