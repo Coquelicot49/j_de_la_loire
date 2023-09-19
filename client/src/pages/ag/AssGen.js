@@ -8,19 +8,25 @@ import {supabase} from '../../supabase.ts';
 
 const AssGen = () => {
 
-    // FETCH TABLE AG //
-    // Définition de l'état initial des données de la table "ag", donc vide au départ
+    // DEFINITION UseState
+    // Définition de l'état initial des données de la table "ag", donc vide au départ avant fetchAG
     // Au besoin, setDataAG prendra des valeurs différentes pour remplir les données dataAG des AG_card
     const [dataAG, setDataAG] = useState(null);
 
+    // Définition de l'état inital des données de la table "societaires", donc vide avant fetchSOCFiltre
+    const [dataSocFiltre, setDataSocFiltre] = useState(null)
+
     // Définition de la valeur initial des filtres
     const [yearFilter, setYearFilter] = useState('')
-    const [hostFilter,setHostFilter] = useState('')
+    const [hostFilter, setHostFilter] = useState('')
+    const [socFilter, setSocFilter] = useState('')
 
 
+    // FETCH DES TABLES AG & SOCIETAIRES //
     // useEffect pour fetcher la table "ag" en totalité via "fetchAG()"
     useEffect(() => {
         fetchAG();
+        fetchSOCFiltre();
       }, []);
 
     // fonction/requête qui appelle toutes les données de la table "ag"
@@ -36,25 +42,41 @@ const AssGen = () => {
             if (hostFilter) { query = query.eq('host', hostFilter) }
            
             const {data: ag, error} = await query
-                setDataAG(ag)
-                setTotalAG(ag.length)
-
+            setDataAG(ag)
+            setTotalAG(ag.length)
         }
         catch (error) {
             console.log(error)
         }
     }
 
+    // fonction/requête qui appelle toutes les données de la table "societaires"
+    const fetchSOCFiltre = async() => {
+        try {
+            let {data : socFiltre, error} = await supabase 
+            .from('societaires')
+            .select('prenom')
+            .order('prenom')
+
+            if (socFiltre) {
+            setDataSocFiltre(socFiltre)
+            }   
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
     // ACTIVER LES FILTRES
     const handleFilter = () => {
-        console.log(yearFilter)
         fetchAG()
     }
 
     // EFFACER LES FILTRES
     // au click du bouton "Effacer les filtres"
     const resetFilter = () => { 
+        // setYearFilter('')
+        // setHostFilter('')
         fetchAG() 
     }
 
@@ -80,20 +102,61 @@ const AssGen = () => {
                 <div className='filtreAG'>
                     <div><p> Tu peux filtrer par :</p></div>
                     <div className='filterBox'>
-                        <select className="filterAGByYear"
+
+                        {/* filtre par année */}
+                        <select 
+                            className="filterAGByYear"
                             onChange={(e) => setYearFilter(e.target.value)}
                             value={yearFilter}>
-                            <option> par Année </option>
-                            <option> 2008 </option>
+
+                            <option value=''> par Année </option>
+
+                            {dataAG ?
+                            (dataAG.map((item) => (
+                            <option key={item.id_ag} value={item.year}>
+                                {item.year}
+                            </option>
+                            )))
+                            : (<option>pas d'année</option>)}
+
                         </select>
 
-                        <select className="filterAGByYear"
+                        {/* filtre par host */}
+                        <select 
+                            className="filterAGByHost"
                             onChange={(e) => setHostFilter(e.target.value)}
                             value={hostFilter}>
-                            <option> par host </option>
-                            <option> Ski </option></select>
 
-                        <select><option> par sociétaire </option></select>
+                            <option value=''> par lieu </option>
+
+                            {dataAG ?
+                            (dataAG.map((item) => (
+                            <option key={item.id_ag} value={item.host}>
+                                {item.host}
+                            </option>
+                            )))
+                            : (<option>pas de lieu</option>)}
+                            
+                        </select>
+
+
+                        {/* filtre par sociétaire */}
+                        <select
+                                className='filterAGBySoc'
+                                onChange={(e)=> setSocFilter(e.target.value)}
+                                value={socFilter}>
+
+                            <option value=''>par sociétaire</option>
+
+                            {dataSocFiltre ? 
+                            (dataSocFiltre.map((item) => (
+                            <option key={item.id_soc} value={item.prenom}>
+                                {item.prenom}
+                            </option>
+                            )))
+                            : <option>pas de résultat</option>}
+
+                        </select>
                     </div>
 
                     <div id="boutonsFiltres">
