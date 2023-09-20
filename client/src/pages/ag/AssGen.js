@@ -16,6 +16,12 @@ const AssGen = () => {
     // Définition de l'état inital des données de la table "societaires", donc vide avant fetchSOCFiltre
     const [dataSocFiltre, setDataSocFiltre] = useState(null)
 
+    // Définition de l'état initial des valeurs unique de la colonne "host" de la table "ag"
+    const [dataHostFilter, setDataHostFilter] = useState(null)
+
+    // Définition de l'état initial des valeurs unique de la colonne "year" de la table "ag"
+    const [dataYearFilter, setDataYearFilter] = useState(null)
+
     // Définition de la valeur initial des filtres
     const [yearFilter, setYearFilter] = useState('')
     const [hostFilter, setHostFilter] = useState('')
@@ -32,6 +38,8 @@ const AssGen = () => {
     useEffect(() => {
         fetchAG();
         fetchSOCFiltre();
+        fetchHostList();
+        fetchYearList();
       }, []);
 
     // fonction/requête qui appelle toutes les données de la table "ag"
@@ -55,6 +63,7 @@ const AssGen = () => {
     }
 
     // fonction/requête qui appelle toutes les données de la table "societaires"
+    // pour les inclure dans les choix du filtre "par sociétaire"
     const fetchSOCFiltre = async() => {
         try {
             let {data : socFiltre, error} = await supabase 
@@ -70,6 +79,37 @@ const AssGen = () => {
             console.log(error)
         }
     }
+
+    // Liste des valeurs uniques pour le filtre HOST
+    const fetchHostList = async() => {
+        try {
+            let {data : hostList, error} = await supabase
+            .from('host_list')
+            .select('*')
+            .order('host')
+
+            setDataHostFilter(hostList)
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+        // Liste des valeurs uniques pour le filtre YEAR
+        const fetchYearList = async() => {
+            try {
+                let {data : yearList, error} = await supabase
+                .from('year_list')
+                .select('*')
+                .order('year')
+    
+                setDataYearFilter(yearList)
+            }
+            catch (error) {
+                console.log(error)
+            }
+        }
+
 
     // ACTIVER LES FILTRES
     const handleFilter = async() =>  {
@@ -136,8 +176,8 @@ const AssGen = () => {
 
                             <option value=''> par Année </option>
 
-                            {dataAG ?
-                            (dataAG.map((item) => (
+                            {dataYearFilter ?
+                            (dataYearFilter.map((item) => (
                             <option key={item.id_ag} value={item.year}>
                                 {item.year}
                             </option>
@@ -154,8 +194,8 @@ const AssGen = () => {
 
                             <option value=''> par lieu </option>
 
-                            {dataAG ?
-                            (dataAG.map((item) => (
+                            {dataHostFilter ?
+                            (dataHostFilter.map((item) => (
                             <option key={item.id_ag} value={item.host}>
                                 {item.host}
                             </option>
