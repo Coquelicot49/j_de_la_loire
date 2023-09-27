@@ -26,6 +26,8 @@ const AssGen = () => {
     const [yearFilter, setYearFilter] = useState('')
     const [hostFilter, setHostFilter] = useState('')
     const [socFilter, setSocFilter] = useState('')
+    const [arrIdagSoc, setArrIdagSoc] = useState('')
+    let arrID = []
 
     // COMPTABILITSATION NOMBRE AG TOTAL
     // Définiton de l'état initial du nombre total d'AG, donc avant appel de la table "ag" à 0
@@ -52,6 +54,7 @@ const AssGen = () => {
             .order('year')
            
             if (ag){
+                console.log(ag)
                 setDataAG(ag)
                 setTotalAG(ag.length)
                 setTotalAGDisplay(ag.length)
@@ -111,7 +114,29 @@ const AssGen = () => {
         }
 
 
-    // ACTIVER LES FILTRES
+    ////////////// ACTIVER LES FILTRES //////////////
+    // Prépa liste des id_ag en fonction de la valeur du filtre sociétaire
+    // liste qui sera appeler dans la fonction handleFilter
+    const filterSocChange = (e) => {
+ 
+        setSocFilter(e.target.value)
+
+            const fetchAGSOC = async() => {
+                let { data: dataListeIDAG } = await supabase
+                .from('presents_soc_ag')
+                .select('id_ag')
+                .eq('prenom', e.target.value)
+        
+                    for (let i = 0 ; i < dataListeIDAG.length; i++) {
+                        let refID = dataListeIDAG[i]
+                        arrID.push(refID.id_ag)
+                    }
+                setArrIdagSoc(arrID)
+            }
+        fetchAGSOC()
+    }
+
+    // Activation des filtres
     const handleFilter = async() =>  {
         try {
             let query = supabase
@@ -119,8 +144,11 @@ const AssGen = () => {
             .select('*')
             .order('year')
 
-            if (yearFilter) { query = query.eq('year', yearFilter) }
+            if (yearFilter) {query = query.eq('year', yearFilter) }
             if (hostFilter) { query = query.eq('host', hostFilter) }
+            if (socFilter) { query = query.filter('id_ag','in',`(${arrIdagSoc})`)}
+            // if (socFilter) { await fetchAGSOC() ; query = query.filter('id_ag','in',`(${arrIdagSoc})`)}
+            
            
             const {data: ag, error} = await query
             setDataAG(ag)
@@ -130,6 +158,7 @@ const AssGen = () => {
             console.log(error)
         }
     }
+
 
     // EFFACER LES FILTRES
     // au click du bouton "Effacer les filtres"
@@ -208,20 +237,20 @@ const AssGen = () => {
                         {/* filtre par sociétaire */}
                         <select
                                 className='filterAGBySoc'
-                                onChange={(e)=> setSocFilter(e.target.value)}
+                                onChange={filterSocChange}
                                 value={socFilter}>
 
                             <option value=''>par sociétaire</option>
 
                             {dataSocFiltre ? 
                             (dataSocFiltre.map((item) => (
-                            <option key={item.id_soc} value={item.prenom}>
+                            <option key={item.id_ag} value={item.prenom}>
                                 {item.prenom}
                             </option>
                             )))
                             : <option>pas de résultat</option>}
 
-                        </select>
+                        </select> 
                     </div>
 
                     <div id="boutonsFiltres">
