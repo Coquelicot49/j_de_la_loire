@@ -63,51 +63,51 @@ const Inscription = () => {
                     </div>
 
 
-                { showFormulaire && (
-                <form id="formSignup">
+                    { showFormulaire && (
+                    <form id="formSignup">
 
-                    <div><br/>Félicitation, tu as donné le mot de passe que seuls les Jadeau connaissent. 
-                    <br/>Tu peux t'inscrire en complétant les champs suivants : 
-                    <br/>
-                    </div>
+                        <div><br/>Félicitation, tu as donné le mot de passe que seuls les Jadeau connaissent. 
+                        <br/>Tu peux t'inscrire en complétant les champs suivants : 
+                        <br/>
+                        </div>
 
-                    <div className='formStep'>
-                    <p className='inputP'>Prénom : 
-                    <input className='inputID'
-                    type="text"
-                    />
-                    </p>
-                    </div>
+                        <div className='formStep'>
+                        <p className='inputP'>Prénom : 
+                        <input className='inputID'
+                        type="text"
+                        />
+                        </p>
+                        </div>
 
-                    <div className='formStep'>
-                    <p className='inputP'>Nom : 
-                    <input className='inputID'
-                    type="text"
-                    />
-                    </p>
-                    </div>
+                        <div className='formStep'>
+                        <p className='inputP'>Nom : 
+                        <input className='inputID'
+                        type="text"
+                        />
+                        </p>
+                        </div>
 
-                    <div className='formStep'>
-                    <p className='inputP'>E-mail : 
-                    <input className='inputID'
-                    type="email"
-                    />
-                    </p>
-                    </div>
+                        <div className='formStep'>
+                        <p className='inputP'>E-mail : 
+                        <input className='inputID'
+                        type="email"
+                        />
+                        </p>
+                        </div>
 
-                    <div className='formStep'>
-                    <p className='inputP'>Mot de passe : 
-                    <input className='inputID'
-                    type="password"
-                    />
-                    </p>
-                    </div>
+                        <div className='formStep'>
+                        <p className='inputP'>Mot de passe : 
+                        <input className='inputID'
+                        type="password"
+                        />
+                        </p>
+                        </div>
 
-                    <div className='formStep2'>
-                    <Bouton id='boutonID' texteBouton='Création de mon compte'/>
-                    </div>
+                        <div className='formStep2'>
+                        <Bouton id='boutonID' texteBouton='OK'/>
+                        </div>
 
-                </form> )}
+                    </form> )}
             </div>
 
         </div>
