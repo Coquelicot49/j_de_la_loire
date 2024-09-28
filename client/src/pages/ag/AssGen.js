@@ -119,7 +119,7 @@ const AssGen = () => {
     // Prépa liste des id_ag en fonction de la valeur du filtre sociétaire
     // liste qui sera appeler dans la fonction handleFilter
     const filterSocChange = (e) => {
- 
+        
         setSocFilter(e.target.value)
 
             const fetchAGSOC = async() => {
@@ -207,8 +207,8 @@ const AssGen = () => {
                             <option value=''> par Année </option>
 
                             {dataYearFilter ?
-                            (dataYearFilter.map((item) => (
-                            <option key={item.id_ag} value={item.year}>
+                            (dataYearFilter.map((item, index) => (
+                            <option key={index} value={item.year}>
                                 {item.year}
                             </option>
                             )))
@@ -225,8 +225,8 @@ const AssGen = () => {
                             <option value=''> par lieu </option>
 
                             {dataHostFilter ?
-                            (dataHostFilter.map((item) => (
-                            <option key={item.id_ag} value={item.host}>
+                            (dataHostFilter.map((item, index) => (
+                            <option key={index} value={item.host}>
                                 {item.host}
                             </option>
                             )))
@@ -239,13 +239,14 @@ const AssGen = () => {
                         <select
                                 className='filterAGBySoc'
                                 onChange={filterSocChange}
-                                value={socFilter}>
+                                value={socFilter}
+                                >
 
                             <option value=''>par sociétaire</option>
 
                             {dataSocFiltre ? 
-                            (dataSocFiltre.map((item) => (
-                            <option key={item.id_ag} value={item.prenom}>
+                            (dataSocFiltre.map((item, index) => (
+                            <option key={index} value={item.prenom}>
                                 {item.prenom}
                             </option>
                             )))
@@ -272,8 +273,8 @@ const AssGen = () => {
                     {/* si dataAG (= résultat de la requête) comporte des données, alors... */}
                     {dataAG ? (
                         //...alors pour chaque ligne de données dispo, rempli une card_AG et affiche là
-                        dataAG.map((item) => (
-                            <AG_card key={item.id_ag} year={item.year} season={item.season} place={item.place} host={item.host} id_ag={item.id_ag}/>
+                        dataAG.map((item, index) => (
+                            <AG_card key={index} year={item.year} season={item.season} place={item.place} host={item.host} id_ag={item.id_ag}/>
                         ))
                         //...sinon ou en attendant affiche le message d'attente
                     ) : (<p>En cours de chargement...</p>)}
