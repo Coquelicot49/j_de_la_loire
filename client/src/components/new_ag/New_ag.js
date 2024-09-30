@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./New_ag.css"
 import Bouton from '../bouton/Bouton';
 import {supabase} from '../../supabase.ts';
-import AG_card from '../../components/ag_card/AG_card';
+import AG_card_simple from '../../components/ag_card/AG_card_simple.js';
 
 
 const New_ag = () => {
@@ -291,7 +291,7 @@ const New_ag = () => {
                 {dataLastAG ? (
                     //...alors pour chaque ligne de données dispo, rempli une card_AG et affiche là
                     dataLastAG.map((item, index) => (
-                        <AG_card key={index} year={item.year} season={item.season} place={item.place} host={item.host} id_ag={item.id_ag}/>
+                        <AG_card_simple key={index} year={item.year} season={item.season} place={item.place} host={item.host} id_ag={item.id_ag}/>
                     ))
                     //...sinon ou en attendant affiche le message d'attente
                 ) : (<p>En cours de chargement...</p>)}
