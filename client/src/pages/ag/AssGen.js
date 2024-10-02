@@ -5,7 +5,8 @@ import AG_card from '../../components/ag_card/AG_card';
 import "./AssGen.css"
 import Bouton from '../../components/bouton/Bouton';
 import {supabase} from '../../supabase.ts';
-import New_ag from '../../components/new_ag/New_ag.js';
+//import NewAG_step1 from '../../components/new_ag/New_ag.js';
+import { NavLink } from 'react-router-dom';
 
 const AssGen = () => {
 
@@ -265,7 +266,7 @@ const AssGen = () => {
                     </div>
 
                     <div id='addAGButton'>
-                    <Bouton texteBouton="Ajouter une AG"/>
+                    <NavLink to="/jador/assembleegenerale/newagstep1"><Bouton texteBouton="Ajouter une A.G."/></NavLink>
                     </div>
                 </div>
 
@@ -278,11 +279,6 @@ const AssGen = () => {
                         ))
                         //...sinon ou en attendant affiche le message d'attente
                     ) : (<p>En cours de chargement...</p>)}
-                </div>
-                
-                {/* Test visuel du composant New_ag */}
-                <div>
-                    <New_ag/>
                 </div>
 
             </div>

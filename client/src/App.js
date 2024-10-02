@@ -23,6 +23,9 @@ import Don from "./pages/don/Don"
 import MonCompte from "./pages/monCompte/MonCompte"
 import Inscription from "./pages/inscription/Inscription"
 import Parameters from './pages/parameters/Parameters';
+//import New_ag from './components/new_ag/New_ag';
+import NewAG_step1 from './pages/ag/NewAG_step1';
+import NewAG_step2 from './pages/ag/NewAG_step2';
 
  
 const App = () => {
@@ -49,6 +52,9 @@ const App = () => {
           <Route path="/jador/statuts" element={<Statuts/>} />
           <Route path="/jador/conseiladmin" element={<ConseilAdmin/>} />
           <Route path="/jador/assembleegenerale" element={<AssGen/>} />
+          <Route path="/jador/assembleegenerale/newagstep1" element={<NewAG_step1/>} />
+          <Route path="/jador/assembleegenerale/newagstep2" element={<NewAG_step2/>} />
+
           <Route path="/jador/don" element={<Don/>} />
         <Route path="/moncompte" element={<MonCompte/>} />
           <Route path="/moncompte/parameters" element={<Parameters/>} />

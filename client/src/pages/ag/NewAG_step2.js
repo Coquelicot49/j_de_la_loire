@@ -1,23 +1,14 @@
 import React, { useCallback } from 'react'
 import { useState, useEffect } from "react";
-import "./New_ag.css"
-import Bouton from '../bouton/Bouton.js';
+//import "./New_ag.css"
+import Bouton from '../../components/bouton/Bouton.js';
 import {supabase} from '../../supabase.ts';
-import AG_card_simple from '../ag_card/AG_card_simple.js';
+import AG_card_simple from '../../components/ag_card/AG_card_simple.js';
+import { NavLink } from 'react-router-dom';
 
 
-const New_ag = () => {
+const NewAG_step2 = () => {
 
-
-    
-
-    // useState Pour STEP 1
-    // Valeur des l'input pour ajout dans la table AG
-    const [hostInput, setHostInput] = useState("")
-    const [villeInput, setVilleInput] = useState("")
-    const [yearInput, setYearInput] = useState("")
-    const [saisonInput, setSaisonInput] = useState("")
-    const [comment, setComment] = useState(null)
 
     // useState Pour STEP 2
     // Valeur des sociétaires à mettre dans le menu deroulant STEP 2
@@ -30,7 +21,7 @@ const New_ag = () => {
     const [idAGToAdd, setIdAGToAdd] = useState("")
     //const [dataReceived, setDataReceived] = useState(false);
     const [dataLastAG, setDataLastAG] = useState(null)
-    let idDuSoc
+    //et idDuSoc
 
     // FETCH DE LA TABLE SOCIETAIRES //
     // useEffect pour fetcher la table "societaires" en totalité via "fetchSOCliste()"
@@ -53,33 +44,7 @@ const New_ag = () => {
         {fetchLatestAG2();}       
       }, []);
       
-////////////////////////////     STEP 1   :  AJOUTER UNE NOUVELLE AG
 
-    // Fonction qui Insert les infos dans AG > STEP 1
-    const ajoutStepUne = async() => {
-   
-        try {
-            let {data, error } = await supabase
-            .from('ag')
-            .insert([
-                { host: hostInput ,
-                place: villeInput ,
-                year: yearInput,
-                season: saisonInput ,
-                comment: comment,
-                time_place: new Date().toISOString()
-            },
-                ])
-                .select()
-
-                // en attendant que l'ajout d'une ag soit dans une page annexe
-                // cela permet d'avoir le résultat de l'ajout de l'ag directement en cliquant sur le bouton
-                window.location.href = '/jador/assembleegenerale'
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
 
 ////////////////////////////   STEP 2   : AJOUT DU SOCIETAIRE DANS L'AG 
 
@@ -186,7 +151,7 @@ const New_ag = () => {
     
                 // en attendant que l'ajout d'une ag soit dans une page annexe
                 // cela permet d'avoir le résultat de l'ajout de l'ag directement en cliquant sur le bouton
-           window.location.href = '/jador/assembleegenerale'
+           window.location.href = '/jador/assembleegenerale/newagstep2'
         
             if (error) {
                 console.error('fetchAddSocInPresents error :', error)
@@ -204,68 +169,9 @@ const New_ag = () => {
         <div>
 
             <div>
-            <h1>Création d'une nouvelle AG</h1>
+            <h1>Création d'une nouvelle AG - Ajout des participants</h1>
             </div>
 
-            <div className='formNewAG'>
-                <form>
-                    
-                    <div>
-                        <p>Commence par renseigner les infos spatio temporelles</p>
-                    </div>
-                
-                    <div>
-                    <p>Host : 
-                    <input className='inputID'
-                    type="texte"
-                    onChange={(e) => setHostInput(e.target.value)}
-                    value={hostInput}
-                    placeholder = "ex: Ski, Camping, Chez Flavie, ... "
-                    />
-                    </p>
-                    </div>
-
-                    <div>
-                    <p>Ville : 
-                    <input className='inputID'
-                    type="texte"
-                    onChange={(e) => setVilleInput(e.target.value)}
-                    value={villeInput}
-                    />
-                    </p>
-                    </div>
-
-                    <div>
-                    <p>Année : 
-                    <input className='inputID'
-                    type="texte"
-                    onChange={(e) => setYearInput(e.target.value)}
-                    value={yearInput}
-                    placeholder = "2024"
-                    />
-                    </p>
-                    </div>
-
-                    <div>
-                    <p>Saison
-                    <select
-                    className='inputID'
-                    onChange={(e) => setSaisonInput(e.target.value)}
-                    value={saisonInput}>
-                    <option>Choisis une saison</option>
-                    <option>Automne/Hiver</option>
-                    <option>Printemps/Été</option>
-                    </select>
-                    </p>
-                    </div>
-                
-                </form>
-
-                    <div >
-                    <Bouton texteBouton="Ajout step 1" onClick={ajoutStepUne}/> 
-                    </div>
-
-            </div>
         <div>
             <div>
             <select
@@ -286,8 +192,8 @@ const New_ag = () => {
                 </select>
             </div>
 
-            <div id="boutonAddSoc">
-                <Bouton texteBouton="Ajouter" onClick={addSocInPresents}/>
+            <div id="addAGButton">
+                <Bouton texteBouton="Ajouter ce sociétaire" onClick={addSocInPresents}/>
             </div>
 
             <div className='lesCardsAG'>
@@ -301,6 +207,10 @@ const New_ag = () => {
                 ) : (<p>En cours de chargement...</p>)}
             </div>
 
+            <div id='addAGButton'>
+            <NavLink to="/jador/assembleegenerale"><Bouton texteBouton="Terminé, valider l'A.G."/></NavLink>
+            </div>
+
         </div>
 
       
@@ -309,4 +219,4 @@ const New_ag = () => {
     );
 };
 
-export default New_ag;
+export default NewAG_step2;
