@@ -208,7 +208,7 @@ const NewAG_step2 = () => {
             </div>
 
             <div id='addAGButton'>
-            <NavLink to="/jador/assembleegenerale"><Bouton texteBouton="Terminé, valider l'A.G."/></NavLink>
+            <NavLink to="/jador/assembleegenerale"><Bouton texteBouton="Terminé ! Valider l'A.G."/></NavLink>
             </div>
 
         </div>
