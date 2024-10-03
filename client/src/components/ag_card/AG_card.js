@@ -4,11 +4,17 @@ import "./AG_card.css"
 import Bouton from '../bouton/Bouton';
 import {supabase} from '../../supabase.ts';
 
+
 const AG_card = ({year, season, host, place, id_ag}) => {
 
     //AFFICHAGE DES SOCIETAIRES
     // Au besoin, setDataSOC prendra des valeurs différentes pour remplir les données dataSOC des AG_card
     const [dataSOC, setDataSOC] = useState(null)
+
+    const [open, setOpen] = React.useState(false);
+    const handleClick = () => setOpen(true);
+    const handleDialogClose = () => setOpen(false);
+
 
     // useEffect pour fetcher la table "societaire" en totalité via "fetchSOC()"
     useEffect(() => {
@@ -33,10 +39,16 @@ const AG_card = ({year, season, host, place, id_ag}) => {
     }
 
 
+    // MODIFIER CARD_AG //
+    const modifierAG = () => {
+        alert("Fonction en cours de préparation par Coco.")
+    }
+
 
     // DELETE CARD_AG //
     // fonction/requête qui supprime le rang associé à l'id_ag sélectionnée
     const deleteAG = async() => {
+
         try { 
             let { error } = await supabase
             .from('ag')
@@ -49,6 +61,7 @@ const AG_card = ({year, season, host, place, id_ag}) => {
             console.log(error)
         }
     }
+
 
 
     return (
@@ -81,8 +94,16 @@ const AG_card = ({year, season, host, place, id_ag}) => {
 
 
                 <div className='modifAG'>
-                    <Bouton className="boutonModifAG" texteBouton="✏️" />
-                    <Bouton className="boutonSkipAG" texteBouton="❌" onClick={()=>{deleteAG({id_ag})}}/>
+                    <Bouton className="boutonModifAG" texteBouton="✏️" onClick={()=>{modifierAG()}} />
+                        
+                    {/* <Bouton className="boutonSkipAG" texteBouton="❌" onClick={()=>{deleteAG({id_ag})}}/> */}
+                    <Bouton className="boutonSkipAG" texteBouton="❌" onClick={() => {
+                        if (window.confirm('Tu souhaites vraiment supprimer cet A.G. ?')) {
+                            window.open(deleteAG({id_ag}), this.onCancel() )
+                        }   
+                        } } />
+
+  
                 </div>
 
             </div>
