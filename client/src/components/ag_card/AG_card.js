@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./AG_card.css"
 import Bouton from '../bouton/Bouton';
 import {supabase} from '../../supabase.ts';
+import axios from 'axios';
 
 
 const AG_card = ({year, season, host, place, id_ag}) => {
@@ -20,18 +21,32 @@ const AG_card = ({year, season, host, place, id_ag}) => {
     useEffect(() => {
         fetchSOC();
         }, []);
-    
+
+    async function login() {
+        const response = await axios.get(`http://localhost:5005/login`);
+        localStorage.setItem('session', response.data.session);
+    }
+
+    function signup() {
+        // const response = await axios.get(`http://localhost:5005/signup`, {body: });
+    }
+
+    //////exemple pour modifier les requete supase front
     // fonction/requête qui appelle toutes les données de la table "societaires"
     const fetchSOC = async() => {
         try {
-            let { data: soc_ag, error } = await supabase
-            .from('presents_soc_ag')
-            .select('*')
-            .eq('id_ag', id_ag)
+            const response = await axios.get(`http://localhost:5005/presents_soc_ag/${id_ag}`);
+            if (response.status == 200) {
+                setDataSOC(response.data);
+            } 
+            // let { data: soc_ag, error } = await supabase
+            // .from('presents_soc_ag')
+            // .select('*')
+            // .eq('id_ag', id_ag)
             
-            if (soc_ag) {
-                setDataSOC(soc_ag)
-            }
+            // if (soc_ag) {
+            //     setDataSOC(soc_ag)
+            // }
         }
         catch (error) {
             console.log(error)

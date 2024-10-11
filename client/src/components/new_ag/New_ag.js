@@ -59,6 +59,7 @@ const New_ag = () => {
     const ajoutStepUne = async() => {
    
         try {
+            // axios.post('/ag');
             let {data, error } = await supabase
             .from('ag')
             .insert([
