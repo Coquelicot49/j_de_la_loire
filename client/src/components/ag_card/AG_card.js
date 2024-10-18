@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./AG_card.css"
 import Bouton from '../bouton/Bouton';
 import {supabase} from '../../supabase.ts';
+import axios from 'axios';
 
 
 const AG_card = ({year, season, host, place, id_ag}) => {
@@ -20,18 +21,40 @@ const AG_card = ({year, season, host, place, id_ag}) => {
     useEffect(() => {
         fetchSOC();
         }, []);
-    
-    // fonction/requête qui appelle toutes les données de la table "societaires"
+
+
+    //////////////////////////////////////////////// AUTHENTIFICATION ///////////////////////
+    ////// A revoir 
+    async function login() {
+        const response = await axios.get(`http://localhost:5005/login`);
+        localStorage.setItem('session', response.data.session);
+    }
+
+    ////// A revoir 
+    function signup() {
+        // const response = await axios.get(`http://localhost:5005/signup`, {body: });
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////// Requête 1 de AG_card.js \\\\\\
+
+    // fonction/requête qui appelle toutes les données de la table/view "presents_soc_ag" (champs : id_ag - id_soc - prénom)
+    // avec filtre sur id_ag = ad_ag pour que chaque AG_CARD n'affiche que les prénoms concernant l'AG de la card
     const fetchSOC = async() => {
         try {
-            let { data: soc_ag, error } = await supabase
-            .from('presents_soc_ag')
-            .select('*')
-            .eq('id_ag', id_ag)
+            const response = await axios.get(`http://localhost:5005/presents_soc_ag/${id_ag}`);
+            if (response.status == 200) {
+                setDataSOC(response.data);
+            } 
+            // let { data: soc_ag, error } = await supabase
+            // .from('presents_soc_ag')
+            // .select('*')
+            // .eq('id_ag', id_ag)
             
-            if (soc_ag) {
-                setDataSOC(soc_ag)
-            }
+            // if (soc_ag) {
+            //     setDataSOC(soc_ag)
+            // }
         }
         catch (error) {
             console.log(error)

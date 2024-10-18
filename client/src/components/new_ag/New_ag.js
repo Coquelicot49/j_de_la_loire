@@ -6,10 +6,7 @@ import {supabase} from '../../supabase.ts';
 import AG_card_simple from '../ag_card/AG_card_simple.js';
 
 
-const New_ag = () => {
-
-
-    
+const New_ag = () => {    
 
     // useState Pour STEP 1
     // Valeur des l'input pour ajout dans la table AG
@@ -59,6 +56,7 @@ const New_ag = () => {
     const ajoutStepUne = async() => {
    
         try {
+            // axios.post('/ag');
             let {data, error } = await supabase
             .from('ag')
             .insert([
@@ -72,7 +70,6 @@ const New_ag = () => {
                 ])
                 .select()
 
-                // en attendant que l'ajout d'une ag soit dans une page annexe
                 // cela permet d'avoir le résultat de l'ajout de l'ag directement en cliquant sur le bouton
                 window.location.href = '/jador/assembleegenerale'
         }
@@ -184,7 +181,6 @@ const New_ag = () => {
                 ])
                 .select()
     
-                // en attendant que l'ajout d'une ag soit dans une page annexe
                 // cela permet d'avoir le résultat de l'ajout de l'ag directement en cliquant sur le bouton
            window.location.href = '/jador/assembleegenerale'
         

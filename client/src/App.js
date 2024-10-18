@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Hall from "./pages/hall/Hall";
 import Login from "./pages/login/Login"
@@ -26,9 +26,20 @@ import Parameters from './pages/parameters/Parameters';
 //import New_ag from './components/new_ag/New_ag';
 import NewAG_step1 from './pages/ag/NewAG_step1';
 import NewAG_step2 from './pages/ag/NewAG_step2';
+import MyComponent from './components/component_back/MyComponent';
 
  
 const App = () => {
+
+  /////quand l'authenfication fonctionnera
+//   const [isConnected, setIsConnected] = useState(false);
+//   useEffect(() => {
+//     const response = await axios.get(`http://localhost:5005/presents_soc_ag/${id_ag}`);
+//             if (response.status == 401) {
+//                 setIsConnected(false);
+//             } 
+//   })
+
   return (
     <BrowserRouter>
       <Routes>
@@ -54,10 +65,12 @@ const App = () => {
           <Route path="/jador/assembleegenerale" element={<AssGen/>} />
           <Route path="/jador/assembleegenerale/newagstep1" element={<NewAG_step1/>} />
           <Route path="/jador/assembleegenerale/newagstep2" element={<NewAG_step2/>} />
-
           <Route path="/jador/don" element={<Don/>} />
         <Route path="/moncompte" element={<MonCompte/>} />
           <Route path="/moncompte/parameters" element={<Parameters/>} />
+
+          <Route path="/testback" element={<MyComponent/>} />
+
       </Routes>
     </BrowserRouter>
   );
