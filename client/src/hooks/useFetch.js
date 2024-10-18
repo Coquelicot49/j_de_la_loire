@@ -2,7 +2,9 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 
 export const useFetch = (route) => {
+
     const [data, setData] = useState(null);
+
     useEffect(() => {
         const fetchData = async () => { 
             try {
@@ -12,7 +14,10 @@ export const useFetch = (route) => {
                 console.error(error);
             }
         }; 
+
         fetchData();
+        
     }, []);
+
     return data;
 }

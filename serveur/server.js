@@ -19,6 +19,11 @@ const supabase = createClient(
   process.env.SUPABASE_ANON_KEY
 );
 
+//////////////////////////////////////////////// AUTHENTIFICATION ///////////////////////
+////// A revoir  
+// cf composant AG_CARD.JS
+// cf client/App.js
+
 // Signup route
 app.post('/auth/signup', async (req, res) => {
   const { email, password } = req.body;
@@ -82,7 +87,6 @@ app.get('/protected', async (req, res) => {
 
     if (error) throw error;
 
-
     // supabase
     //         .from('profiles')
     //         .select('*')
@@ -100,6 +104,8 @@ app.get('/protected', async (req, res) => {
     });
   }
 });
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 
 app.get('/', (req, res) => { 
   // Handle your API logic here 
@@ -107,6 +113,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello from Express!' });
 }); 
 
+
+////// Requête 1 de AG_card.js \\\\\\
 app.get('/presents_soc_ag/:id_ag', (req, res) => { 
     supabase
             .from('presents_soc_ag')
@@ -119,3 +127,4 @@ app.get('/presents_soc_ag/:id_ag', (req, res) => {
 app.listen(port, () => { 
   console.log(`Server is running on port ${port}`); 
 });
+
