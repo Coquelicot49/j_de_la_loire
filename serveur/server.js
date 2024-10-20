@@ -19,36 +19,41 @@ const supabase = createClient(
   process.env.SUPABASE_ANON_KEY
 );
 
+// test du back
+app.get('/', (req, res) => { 
+  // Handle your API logic here 
+  console.log("test back")
+  res.json({ message: 'Hello from Express!' });
+}); 
+
 //////////////////////////////////////////////// AUTHENTIFICATION ///////////////////////
 ////// A revoir  
-// cf composant AG_CARD.JS
-// cf client/App.js
-
+// Fonctionne actuellement sans le back
 // Signup route
-app.post('/auth/signup', async (req, res) => {
-  const { email, password } = req.body;
+// app.post('/auth/signup', async (req, res) => {
+//   const { email, password } = req.body;
 
-  try {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+//   try {
+//     const { data, error } = await supabase.auth.signUp({
+//       email,
+//       password,
+//     });
 
-    if (error) throw error;
+//     if (error) throw error;
 
-    res.status(201).json({
-      message: 'Signup successful',
-      user: data.user,
-    });
-  } catch (error) {
-    res.status(400).json({
-      error: error.message,
-    });
-  }
-});
+//     res.status(201).json({
+//       message: 'Signup successful',
+//       user: data.user,
+//     });
+//   } catch (error) {
+//     res.status(400).json({
+//       error: error.message,
+//     });
+//   }
+// });
 
 // Login route
-app.post('/auth/login', async (req, res) => {
+app.get('/auth/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -107,14 +112,8 @@ app.get('/protected', async (req, res) => {
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-app.get('/', (req, res) => { 
-  // Handle your API logic here 
-  console.log("test back")
-  res.json({ message: 'Hello from Express!' });
-}); 
-
-
 ////// Requête 1 de AG_card.js \\\\\\
+// get de la table/vieuw 'presents_soc_ag' avec la variable id_ag
 app.get('/presents_soc_ag/:id_ag', (req, res) => { 
     supabase
             .from('presents_soc_ag')

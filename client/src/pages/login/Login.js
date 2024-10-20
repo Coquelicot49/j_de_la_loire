@@ -4,11 +4,15 @@ import "./Login.css"
 // import Logo from '../components/logo/Logo';
 import pinkLogo from "../../images/rondrose.png"
 import Bouton from '../../components/bouton/Bouton';
+import {supabase} from '../../supabase.ts';
 import { NavLink } from 'react-router-dom';
 
 const Login = () => {
 
-
+    // async function login() {
+    //     const response = await axios.get(`http://localhost:5005/login`);
+    //     localStorage.setItem('session', response.data.session);
+    // }
     
     return (
     <div>

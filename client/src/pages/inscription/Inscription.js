@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../index.css"
 import "./Inscription.css"
 import pinkLogo from "../../images/rondrose.png"
@@ -6,6 +6,7 @@ import pinkLogo from "../../images/rondrose.png"
 import Bouton from '../../components/bouton/Bouton';
 // console.log(process.env.REACT_APP_MDP_FORM)
 import {supabase} from '../../supabase.ts';
+//import axios from 'axios';
 
 
 const Inscription = () => {
@@ -21,8 +22,15 @@ const Inscription = () => {
     const [showFormulaire, setShowFormulaire] = useState(false)
     // valeur de email
     const [email, setEmail] = useState("")
+    // valeur de Prénom
+    const [prenom, setPrenom] = useState("")
+    // valeur du Nom
+    const [nom, setNom] = useState("")
     // valeur de mot de pass
     const [password, setPassword] = useState("")
+    // valeur des messages d'erreur
+    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
 
     // fonction rattachée à l'input onChange
     // ainsi, la valeur de mdp sera actualisé à chaque changement dans l'input
@@ -42,28 +50,60 @@ const Inscription = () => {
     
     ////////////////////////////////////////////////
     //////// CREATION COMPTE AVEC SUPABASE ////////
-        
+
+//////// Version sans le back
     //// Au click, fonction qui lance l'inscription
-    const inscriptionNewUser = async() => {
+    // Tentative sans back avec claude
+    const signup = async (e) => {
+        e.preventDefault();
+    
+        const { data, error } = await supabase.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            data: {
+                full_name : prenom,
+               // emailRedirectTo: 'http://www.jadeaudelaloire.com'
+            }
+          }
+        });
+    
+        if (error) {
+            setError(error.message);
+            setMessage('');
+            // Pop up pour annoncer une erreur
+            alert('Oups ! Il y a un bug. Contact Coco en lui donnant le message suivant : Erreur : '&error&' - Message : '&message)
 
-        console.log("1 : "& email)
-        console.log("1 : "& password)
+        } else {
+            // Pop up pour annoncer la réussite
+            alert('Inscription réussie ! Un email vous a été envoyé pour confirmer.');
+            setError('');
 
-       // setShowFormulaire(true)
+            // Rejoindre page de connexion
+            window.location.href = '/login'
+        }
+      };
 
-    let { data, error } = await supabase.auth.signUp({
-        
-        email: email,
-        password: password
-      })
 
-      console.log("2 : "& email)
-      console.log("2 : "& password)
+//////// Version sans avec back - A revoir
+    // const signup = async() => {
+    //     try {
+    //         const response = await 
+    //         //axios.post(`http://localhost:5005/auth/signup`);
+    //         axios.get(`http://localhost:5005/auth/signup`, {
+    //             emailform,
+    //             password,
+    //         });
+    //         setMessage(response.data.message);
+    //         setError(''); // Réinitialiser l'erreur si l'inscription réussit
+    //       } catch (err) {
+    //         setError(err.response.data.error || 'Une erreur est survenue');
+    //         setMessage(''); // Réinitialiser le message si l'inscription échoue
+    //       }
+    // }
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
-      // Rejoindre page de connexion
-      window.location.href = '/login'
 
-    }
       
 
  
@@ -107,22 +147,27 @@ const Inscription = () => {
                         <p className='inputP'>Prénom : 
                         <input className='inputID'
                         type="text"
+                        value={prenom}
+                        onChange={(e) => setPrenom(e.target.value)}
                         />
                         </p>
                         </div>
 
-                        <div className='formStep'>
+                        {/* <div className='formStep'>
                         <p className='inputP'>Nom : 
                         <input className='inputID'
                         type="text"
+                        value={full_name}
+                        onChange={(e) => setNom(e.target.value)}
                         />
                         </p>
-                        </div>
+                        </div> */}
 
                         <div className='formStep'>
                         <p className='inputP'>E-mail : 
                         <input className='inputID'
                         type="email"
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         />
                         </p>
@@ -132,13 +177,15 @@ const Inscription = () => {
                         <p className='inputP'>Mot de passe : 
                         <input className='inputID'
                         type="password"
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         />
                         </p>
                         </div>
 
                         <div className='formStep2'>
-                        <Bouton id='boutonID' texteBouton='OK' onClick={inscriptionNewUser}/>
+                        {/* <Bouton id='boutonID' texteBouton='OK' onClick={inscriptionNewUser}/> */}
+                        <Bouton id='boutonID' texteBouton='OK' onClick={signup}/>
                         </div>
 
                     </form> )}
