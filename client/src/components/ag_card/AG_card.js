@@ -23,20 +23,6 @@ const AG_card = ({year, season, host, place, id_ag}) => {
         }, []);
 
 
-    //////////////////////////////////////////////// AUTHENTIFICATION ///////////////////////
-    ////// A revoir 
-    async function login() {
-        const response = await axios.get(`http://localhost:5005/login`);
-        localStorage.setItem('session', response.data.session);
-    }
-
-    ////// A revoir 
-    function signup() {
-        // const response = await axios.get(`http://localhost:5005/signup`, {body: });
-    }
-    //////////////////////////////////////////////////////////////////////////////////////////////
-
-
 ////// Requête 1 de AG_card.js \\\\\\
 
     // fonction/requête qui appelle toutes les données de la table/view "presents_soc_ag" (champs : id_ag - id_soc - prénom)
