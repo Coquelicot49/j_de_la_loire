@@ -47,7 +47,7 @@ const Navigation = () => {
                 <li className="menuMonCompte"><NavLink to="/moncompte">MON COMPTE</NavLink>
                         <ul className="submenu">
                             <li><NavLink to="/moncompte/parameters">Mes paramètres</NavLink></li>
-                            <li><NavLink>Déconnexion</NavLink></li>
+                            <li><NavLink to="/moncompte/logout">Déconnexion</NavLink></li>
                         </ul>
                 </li>
 
