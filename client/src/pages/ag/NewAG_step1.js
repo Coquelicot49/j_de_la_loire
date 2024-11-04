@@ -1,10 +1,12 @@
 import React, { useCallback } from 'react'
 import { useState, useEffect } from "react";
+import "../index.css"
 //import "./New_ag.css"
 import Bouton from '../../components/bouton/Bouton.js';
 import {supabase} from '../../supabase.ts';
 import AG_card_simple from '../../components/ag_card/AG_card_simple.js';
 import { NavLink } from 'react-router-dom';
+import pinkLogo from "../../images/rondrose.png"
 
 
 const NewAG_step1 = () => {
@@ -110,9 +112,10 @@ const NewAG_step1 = () => {
     return (
     <div>
 
-            <div>
+            <div className='textContent'>
+        
             <h1>Création d'une nouvelle AG - Quoi ? Où ? Quand ?</h1>
-            </div>
+            
 
    
             <div className='formNewAG'>
@@ -184,9 +187,7 @@ const NewAG_step1 = () => {
 
                 {showStep1 && (
                 <div>
-                <div id='addAGButton'>
-                <NavLink to="/jador/assembleegenerale/newagstep2"><Bouton texteBouton="OK, je passe à l'étape suivante"/></NavLink>
-                </div>
+
 
                 <div className='lesCardsAG'>
                 {/* si dataAG (= résultat de la requête) comporte des données, alors... */}
@@ -199,13 +200,17 @@ const NewAG_step1 = () => {
                 ) : (<p>En cours de chargement...</p>)}
                 </div>
 
+                <div id='addAGButton'>
+                <NavLink to="/jador/assembleegenerale/newagstep2"><Bouton texteBouton="OK, je passe à l'étape suivante"/></NavLink>
+                </div>
+
                 </div>
                
                )}
 
             </div> 
 
-          
+            </div>
     </div>
     );
 };

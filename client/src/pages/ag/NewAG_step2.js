@@ -168,9 +168,9 @@ const NewAG_step2 = () => {
     return (
         <div>
 
-            <div>
+            <div className='textContent' >
             <h1>Création d'une nouvelle AG - Ajout des participants</h1>
-            </div>
+           
 
         <div>
             <div>
@@ -213,7 +213,7 @@ const NewAG_step2 = () => {
 
         </div>
 
-      
+        </div>
           
         </div>
     );

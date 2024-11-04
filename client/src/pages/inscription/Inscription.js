@@ -81,8 +81,8 @@ const Inscription = () => {
 
         } else {
             // Pop up pour annoncer la réussite
-            alert('Inscription réussie ! Un email vous a été envoyé pour confirmer.');
-            setError('');
+            alert('Inscription réussie ! Tu peux désormais te connecter avec ton adresse mail et ton mot de passe.');
+            setError(email);
 
             // Rejoindre page de connexion
             window.location.href = '/login'

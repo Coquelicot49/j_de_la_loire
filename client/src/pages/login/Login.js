@@ -33,6 +33,7 @@ const Login = () => {
             setError(error.message);
             setMessage('');
             // Pop up pour annoncer une erreur
+            alert('Erreur d authentification. Si l erreur persiste, contacte Coco.')
             alert('Oups ! Il y a un bug. Contact Coco en lui donnant le message suivant : Erreur : '&error&' - Message : '&message)
 
         } else {
@@ -44,6 +45,11 @@ const Login = () => {
             window.location.href = '/accueil'
         }
 
+    }
+
+    ////// Pop up pour demander la réinitialisation du mot de passe oublié
+    const popUpReset = () => {
+        alert('Demande à Coco. Elle va t envoyer un mail pour le réinitialiser.')
     }
 
   
@@ -85,10 +91,9 @@ const Login = () => {
         </div>
 
                 <div id="forgetMDP">
-                <p>Mot de passe oublié</p>
+                <p onClick={popUpReset}>Mot de passe oublié</p>
                 <p>
                 <NavLink to="/login/inscription"> Première connexion ? Inscris-toi </NavLink></p>
-                <NavLink to="/accueil"><Bouton texteBouton='accès accueil'/></NavLink>
                 </div>
         
                 

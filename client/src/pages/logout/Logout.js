@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import "../index.css"
+import "../logout/Logout.css"
 import Header from '../../components/header/Header';
 // import Logo from '../components/logo/Logo';
 import pinkLogo from "../../images/rondrose.png"
@@ -41,10 +42,11 @@ const Logout = () => {
 
             <div className='textContent'>
             <p>ceci est la page pour se déconnecter</p>
+            
+
+            <Bouton id="boutonsLogout" texteBouton='Je me déconnecte' onClick={deconnect} />
+            
             </div>
-
-            <Bouton texteBouton='Je me déconnecte' onClick={deconnect} />
-
             
         </div>
     );
