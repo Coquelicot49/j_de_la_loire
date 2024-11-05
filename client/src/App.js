@@ -29,6 +29,7 @@ import NewAG_step1 from './pages/ag/NewAG_step1';
 import NewAG_step2 from './pages/ag/NewAG_step2';
 import MyComponent from './components/component_back/MyComponent';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
+import ResetPassword from './pages/login/ResetPassword';
 
  
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
         <Route path="/" element={<Hall/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/login/inscription" element={<Inscription/>}/>
+        <Route path="/reset" element={<ResetPassword/>}/>
 
       <Route element={<ProtectedRoute />}>
           <Route path="/accueil" element={<Accueil/>} />

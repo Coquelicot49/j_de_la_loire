@@ -125,7 +125,7 @@ const AssGen = () => {
 
             const fetchAGSOC = async() => {
                 let { data: dataListeIDAG } = await supabase
-                .from('presents_soc_ag')
+                .from('present_soc_ag')
                 .select('id_ag')
                 .eq('prenom', e.target.value)
         
