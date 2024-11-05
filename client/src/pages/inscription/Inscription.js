@@ -13,9 +13,6 @@ const Inscription = () => {
 
     // définition de l'état initiale de la valeur de l'input, donc vide
     const [mdp, setMdp] = useState("")
-    // définition du bon mot de passe
-    // let bonMdp = process.env.REACT_APP_MDP_FORM
-    let bonMdp = process.env.REACT_APP_MDP_FORM
     // définition de la valeure initiale de showFormalaire (ligne 59)
     // true = affiche le contenu après && (
     // false = cache le contenu après && (
@@ -40,13 +37,21 @@ const Inscription = () => {
 
     // fonction rattaché au 1er bouton
     // si le mot de passe est bon, on change l'état de setShowFormulaire en true pour faire apparaitre le pavé
-    const submit = () => {
-        if (mdp == bonMdp) {
+    const submit = async() => {
+
+        let {data : dataBonMdp, error} = await supabase
+        .from('patte_blanche')
+        .select('key')
+        .eq('id', 1)
+        .single()
+
+        if (mdp == dataBonMdp.key) {
             setShowFormulaire(true)
         }
-        else {alert("Ce n'est pas le bon mot de passe. Es-tu vraiment Jadeau ? Recommence")}
+        else {
+            alert("Ce n'est pas le bon mot de passe. Es-tu vraiment Jadeau ? Recommence")
+        }
     }
-
     
     ////////////////////////////////////////////////
     //////// CREATION COMPTE AVEC SUPABASE ////////
@@ -76,8 +81,8 @@ const Inscription = () => {
 
         } else {
             // Pop up pour annoncer la réussite
-            alert('Inscription réussie ! Un email vous a été envoyé pour confirmer.');
-            setError('');
+            alert('Inscription réussie ! Tu peux désormais te connecter avec ton adresse mail et ton mot de passe.');
+            setError(email);
 
             // Rejoindre page de connexion
             window.location.href = '/login'

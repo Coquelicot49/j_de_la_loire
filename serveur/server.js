@@ -27,7 +27,8 @@ app.get('/', (req, res) => {
 }); 
 
 //////////////////////////////////////////////// AUTHENTIFICATION ///////////////////////
-////// A revoir  
+//////////////////////////////////////////////////////////////////////////////////////////////
+////// A revoir  - SIGNUP
 // Fonctionne actuellement sans le back
 // Signup route
 // app.post('/auth/signup', async (req, res) => {
@@ -51,34 +52,40 @@ app.get('/', (req, res) => {
 //     });
 //   }
 // });
+//////////////////////////////////////////////////////////////////////////////////////////////
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+////// A revoir   - LOGIN
+// Fonctionne actuellement sans le back
 // Login route
-app.get('/auth/login', async (req, res) => {
-  const { email, password } = req.body;
+// app.get('/auth/login', async (req, res) => {
+//   const { email, password } = req.body;
 
-  try {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+//   try {
+//     const { data, error } = await supabase.auth.signInWithPassword({
+//       email,
+//       password,
+//     });
 
-    if (error) throw error;
+//     if (error) throw error;
 
-    res.status(200).json({
-      message: 'Login successful',
-      user: data.user,
-      session: data.session,
-    });
-  } catch (error) {
-    res.status(401).json({
-      error: error.message,
-    });
-  }
-});
-
+//     res.status(200).json({
+//       message: 'Login successful',
+//       user: data.user,
+//       session: data.session,
+//     });
+//   } catch (error) {
+//     res.status(401).json({
+//       error: error.message,
+//     });
+//   }
+// });
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 /////// pour que le user obtienne que les infos qui concerne uniquement
 // Protected route example
+// PAS UTILISE
 app.get('/protected', async (req, res) => {
   const authHeader = req.headers.authorization;
   
