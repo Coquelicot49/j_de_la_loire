@@ -120,17 +120,17 @@ app.get('/protected', async (req, res) => {
 
 
 ////// Requête 1 de AG_card.js \\\\\\
-// get de la table/vieuw 'presents_soc_ag' avec la variable id_ag
-app.get('/presents_soc_ag/:id_ag', (req, res) => { 
-    supabase
-            .from('presents_soc_ag')
-            .select('*')
-            .eq('id_ag', req.params.id_ag).then(({ data: soc_ag, error }) => {
-                res.json(soc_ag);
-            })
-  }); 
+// get de la table/view 'presents_soc_ag' avec la variable id_ag
+// app.get('/presents_soc_ag/:id_ag', (req, res) => { 
+//     supabase
+//             .from('presents_soc_ag')
+//             .select('*')
+//             .eq('id_ag', req.params.id_ag).then(({ data: soc_ag, error }) => {
+//                 res.json(soc_ag);
+//             })
+//   }); 
 
-app.listen(port, () => { 
-  console.log(`Server is running on port ${port}`); 
-});
+// app.listen(port, () => { 
+//   console.log(`Server is running on port ${port}`); 
+// });
 
