@@ -7,6 +7,8 @@ import Bouton from '../../components/bouton/Bouton';
 import {supabase} from '../../supabase.ts';
 //import NewAG_step1 from '../../components/new_ag/New_ag.js';
 import { NavLink } from 'react-router-dom';
+import {HashLink as Link} from 'react-router-hash-link';
+import dossierJador from "../../components/lesPDF/dossier_jador.pdf"
 
 const AssGen = () => {
 
@@ -185,14 +187,16 @@ const AssGen = () => {
     return (
         <div>
             <Header/>
-
            <div className='textContent'>
-
                 <div className='intro'>
                     <h1>Les Assemblées Générales</h1>
-                    <p>Depuis juillet 1997, date du premier camp Jad'Or, un bon nombre de réunion ont été organisée.
-                    <br/>On retrouve ici la liste de toutes ces cousinade / assemblées générales.
+                    <p>Depuis juillet 1997, date du premier camp Jad'Or, un bon nombre de réunion ont été organisée.</p>
+                    <p>Mais d'ailleurs, vous souvenez-vous du dossier officiel du premier camp Jad'or "Un week-end bien sympathique" ?
+                    <br/><Link to={dossierJador} target="_blank" rel="noreferrer">Voir le dossier avec lequel tout a commencé !</Link>
                     </p>
+                    
+                    <p>On retrouve ici la liste de toutes ces cousinades / assemblées générales.</p>
+                    
                 </div>
 
                 <div className='filtreAG'>

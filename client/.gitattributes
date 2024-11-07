@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 *.pdf filter=lfs diff=lfs merge=lfs -text
+=======
+src/components/lesPDF/*.pdf filter=lfs diff=lfs merge=lfs -text
+>>>>>>> 45c916dd9be9465b81422e8ce8f267794423f78b
