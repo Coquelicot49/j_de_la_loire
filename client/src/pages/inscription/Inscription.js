@@ -188,6 +188,13 @@ const Inscription = () => {
                         </p>
                         </div>
 
+                        <div>
+                            <p>
+                                (Le mot de passe doit contenir au minimum 6 caractères 
+                                dont au moins une majuscule, une minuscule et un chiffre.)
+                            </p>
+                        </div>
+
                         <div className='formStep2'>
                         {/* <Bouton id='boutonID' texteBouton='OK' onClick={inscriptionNewUser}/> */}
                         <Bouton id='boutonID' texteBouton='OK' onClick={signup}/>

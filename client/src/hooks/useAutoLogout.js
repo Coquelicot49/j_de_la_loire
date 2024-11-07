@@ -4,7 +4,7 @@ import {supabase} from '../supabase.ts';
 
 
 // 2 heures en millisecondes
-const AUTO_LOGOUT_TIME = 2 * 60 * 60 * 1000; 
+ const AUTO_LOGOUT_TIME = 2 * 60 * 60 * 1000; 
 // 2 minutes en millisecondes
 // const AUTO_LOGOUT_TIME = 0 * 2 * 60 * 1000;
 
@@ -49,11 +49,11 @@ const useAutoLogout = () => {
     }, 60000); // Vérification chaque minute
 
     // Gérer la fermeture de la page
-    const handleTabClose = () => {
-      logout();
-    };
+    // const handleTabClose = () => {
+    //   logout();
+    // };
 
-    window.addEventListener('beforeunload', handleTabClose);
+    // window.addEventListener('beforeunload', handleTabClose);
 
     // Nettoyer les écouteurs d'événements
     return () => {
@@ -61,7 +61,7 @@ const useAutoLogout = () => {
         document.removeEventListener(event, updateLastActivity);
       });
       clearInterval(checkInactivity);
-      window.removeEventListener('beforeunload', handleTabClose);
+      // window.removeEventListener('beforeunload', handleTabClose);
     };
   }, [lastActivity]);
 };

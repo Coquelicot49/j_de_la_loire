@@ -36,8 +36,9 @@ import useAutoLogout from './hooks/useAutoLogout';
 const App = () => {
 
   // Hook pour que le user soit automatiquement déconnecter après x temps d'inactivité
-  // cf composant AUTO_LOGOUT_TIME.js
+  // cf hooks useAutoLogout.js
   useAutoLogout();
+
 
   /////quand l'authenfication fonctionnera
 //   const [isConnected, setIsConnected] = useState(false);
@@ -58,6 +59,7 @@ const App = () => {
         <Route path="/reset" element={<ResetPassword/>}/>
 
       <Route element={<ProtectedRoute />}>
+      
           <Route path="/accueil" element={<Accueil/>} />
           <Route path="/contact" element={<Contact/>} />
             <Route path="/contact/carnetadresse" element={<CarnetAdresse/>} />

@@ -63,7 +63,10 @@ const ResetPassword = () => {
 
             <div >
 
-            <p> Nouveau mot de passe : 
+            <p> Tape ton nouveau mot de passe : 
+              <br/> (Le mot de passe doit contenir au minimum 6 caractères 
+                dont au moins une majuscule, une minuscule et un chiffre.)
+              <br/>
             <input className='inputID'
             type="password" 
             value={newPassword}
