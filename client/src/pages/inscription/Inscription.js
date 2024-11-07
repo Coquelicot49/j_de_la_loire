@@ -4,7 +4,6 @@ import "./Inscription.css"
 import pinkLogo from "../../images/rondrose.png"
 // import Textbox from '../components/textbox/Textbox';
 import Bouton from '../../components/bouton/Bouton';
-// console.log(process.env.REACT_APP_MDP_FORM)
 import {supabase} from '../../supabase.ts';
 //import axios from 'axios';
 

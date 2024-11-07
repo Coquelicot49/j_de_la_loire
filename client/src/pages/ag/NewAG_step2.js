@@ -26,7 +26,6 @@ const NewAG_step2 = () => {
     // FETCH DE LA TABLE SOCIETAIRES //
     // useEffect pour fetcher la table "societaires" en totalité via "fetchSOCliste()"
     useEffect(() => {
-        console.log("idSocToAdd ", idSocToAdd)
         fetchSOCliste();
       }, []);
 
@@ -70,14 +69,11 @@ const NewAG_step2 = () => {
     // STEP 2 : pour obtenir l'ID du sociétaire qui a été sélectionné en fonction de son prénom
     const fetchSocID = async() => {
 
-        console.log('choiceSocToAdd=', choiceSocToAdd)
-
         let { data: idDuSoc } = await supabase
             .from('societaires')
             .select('id_soc')
             .eq('prenom', choiceSocToAdd).single();
 
-        console.log("idDuSoc= ", idDuSoc.id_soc, typeof(idDuSoc.id_soc))
         setIdSocToAdd(idDuSoc.id_soc)
     }
     
@@ -104,10 +100,8 @@ const NewAG_step2 = () => {
                 .select('id_ag')
                 .single()  //pour avoir une seule ligne en mode objet pour pas avoir le tableau
 
-                console.log('latestAG :', latestAG)
                 setIdAGToAdd(latestAG.id_ag) 
 
-                console.log('latestAG :',idAGToAdd)
             }
             catch (error) {
                 console.error('fetchLatestAG', error)

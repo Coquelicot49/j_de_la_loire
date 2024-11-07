@@ -34,7 +34,7 @@ const Login = () => {
             setMessage('');
             // Pop up pour annoncer une erreur
             alert('Erreur d authentification. Si l erreur persiste, contacte Coco.')
-            alert('Oups ! Il y a un bug. Contact Coco en lui donnant le message suivant : Erreur : '&error&' - Message : '&message)
+            //alert('Oups ! Il y a un bug. Contact Coco en lui donnant le message suivant : Erreur : '&error&' - Message : '&message)
 
         } else {
             // Pop up pour annoncer la réussite

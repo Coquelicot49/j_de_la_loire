@@ -3,8 +3,8 @@ import {supabase} from '../supabase.ts';
 //import { supabase } from '../../supabaseClient.ts'; // Ajustez le chemin selon votre configuration
 
 
-// 2 heures en millisecondes
- const AUTO_LOGOUT_TIME = 2 * 60 * 60 * 1000; 
+// Temps d'inactivité choisi : 1 heure en millisecondes
+ const AUTO_LOGOUT_TIME = 1 * 60 * 60 * 1000; 
 // 2 minutes en millisecondes
 // const AUTO_LOGOUT_TIME = 0 * 2 * 60 * 1000;
 

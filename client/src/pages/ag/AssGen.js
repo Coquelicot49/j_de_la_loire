@@ -58,7 +58,6 @@ const AssGen = () => {
             .order('year')
            
             if (ag){
-                console.log(ag)
                 setDataAG(ag)
                 setTotalAG(ag.length)
                 setTotalAGDisplay(ag.length)
