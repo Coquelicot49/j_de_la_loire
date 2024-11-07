@@ -30,9 +30,15 @@ import NewAG_step2 from './pages/ag/NewAG_step2';
 import MyComponent from './components/component_back/MyComponent';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import ResetPassword from './pages/login/ResetPassword';
+import useAutoLogout from './hooks/useAutoLogout';
 
  
 const App = () => {
+
+  // Hook pour que le user soit automatiquement déconnecter après x temps d'inactivité
+  // cf hooks useAutoLogout.js
+  useAutoLogout();
+
 
   /////quand l'authenfication fonctionnera
 //   const [isConnected, setIsConnected] = useState(false);
@@ -53,6 +59,7 @@ const App = () => {
         <Route path="/reset" element={<ResetPassword/>}/>
 
       <Route element={<ProtectedRoute />}>
+      
           <Route path="/accueil" element={<Accueil/>} />
           <Route path="/contact" element={<Contact/>} />
             <Route path="/contact/carnetadresse" element={<CarnetAdresse/>} />

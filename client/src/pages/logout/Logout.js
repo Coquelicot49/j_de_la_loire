@@ -22,7 +22,8 @@ const Logout = () => {
             setError(error.message);
             setMessage('');
             // Pop up pour annoncer une erreur
-            alert('Oups ! Il y a un bug. Contact Coco en lui donnant le message suivant : Erreur : '&error&' - Message : '&message)
+            // alert('Oups ! Il y a un bug. Contact Coco en lui donnant le message suivant : Erreur : '&error&' - Message : '&message)
+            alert('Oups ! Il y a un bug. Contact Coco !')
 
         } else {
             // Pop up pour annoncer la réussite

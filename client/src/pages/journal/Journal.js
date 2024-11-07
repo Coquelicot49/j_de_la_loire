@@ -13,9 +13,8 @@ const Journal = () => {
                 <Header/>
                 <div className='textContent'>
                 <h1>Journal de guerre</h1>
-                <p>Introduction - texte de présentation sur le thème de Papy et la seconde guerre mondiale
-                    <br/>et pourquoi pas évoquer des anecdotes sur le père de papy et la première guerre mondiale
-                    <br/>auteur(s) à déterminer
+                <p>Introduction - APPEL À TÉMOIN pour un texte de présentation sur le thème de Papy et la seconde guerre mondiale
+                    <br/>et pourquoi pas évoquer des anecdotes sur le père de papy et la première guerre mondiale...
                 </p>
                 <p>Accès au carnet de guerre de Papy en version orginal et dactylographiée :
                     <ul>
